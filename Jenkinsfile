@@ -32,6 +32,7 @@ pipeline {
     stage('Compile & Unit Tests') {
       steps{
         echo "------------>Compile & Unit Tests<------------"
+        sh './gradlew --no-build-cache cleanTest test'
         sh 'chmod +x gradlew'
         sh './gradlew --b ./build.gradle test'
       }
@@ -57,7 +58,6 @@ sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallat
   post {
     always {
       echo 'This will always run'
-      sh './gradlew --no-build-cache cleanTest test'
     }
     success {
       echo 'This will run only if successful'
