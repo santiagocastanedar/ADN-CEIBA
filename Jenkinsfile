@@ -32,7 +32,6 @@ pipeline {
     stage('Compile & Unit Tests') {
       steps{
         echo "------------>Compile & Unit Tests<------------"
-        sh './gradlew cleanTest test'
         sh 'chmod +x gradlew'
         sh './gradlew --b ./build.gradle test'
       }
@@ -50,6 +49,7 @@ sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallat
     stage('Build') {
       steps {
         echo "------------>Build<------------"
+        sh './gradlew cleanTest test'
         sh './gradlew --b ./build.gradle build -x test'
       }
     }  
