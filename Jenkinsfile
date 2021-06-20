@@ -60,7 +60,7 @@ sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallat
     }
     success {
       echo 'This will run only if successful'
-      junit 'app/build/tmp/compileDebugUnitTestJavaWithJavac/*.xml'
+      junit 'app/build/test-results/testDebugUnitTest/*.xml'
     }
     failure {
       echo 'This will run only if failed'
