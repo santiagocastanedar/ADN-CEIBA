@@ -57,6 +57,7 @@ sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallat
   post {
     always {
       echo 'This will always run'
+      sh 'gradlew cleanTest test'
     }
     success {
       echo 'This will run only if successful'
