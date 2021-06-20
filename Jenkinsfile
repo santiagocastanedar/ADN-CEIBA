@@ -7,7 +7,7 @@ pipeline {
   //Opciones específicas de Pipeline dentro del Pipeline
   options {
     	buildDiscarder(logRotator(numToKeepStr: '3'))
- 	disableConcurrentBuilds()
+ 	    disableConcurrentBuilds()
   }
 
   //Una sección que define las herramientas “preinstaladas” en Jenkins
@@ -28,12 +28,19 @@ pipeline {
   //Aquí comienzan los “items” del Pipeline
   stages{
     
+
+    stage('Build') {
+      steps {
+        echo "------------>Build<------------"
+        sh './gradlew build -x test'
+      }
+    }
     
     stage('Compile & Unit Tests') {
       steps{
         echo "------------>Compile & Unit Tests<------------"
-        sh 'chmod +x gradlew'
-        sh './gradlew --b ./build.gradle test'
+        sh './gradlew clean'
+        sh './gradlew test'
       }
     }
 
@@ -46,13 +53,7 @@ sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallat
       }
     }
 
-    stage('Build') {
-      steps {
-        echo "------------>Build<------------"
-        sh './gradlew cleanTest test'
-        sh './gradlew --b ./build.gradle build -x test'
-      }
-    }  
+      
   }
 
   post {
