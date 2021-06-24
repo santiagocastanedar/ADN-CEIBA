@@ -1,0 +1,31 @@
+package co.com.ceiba.domain.entity;
+
+import co.com.ceiba.domain.valueobject.ParkingInformationRate;
+
+public class VehicleType {
+    private int id;
+    private String name;
+
+    public VehicleType(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+}
