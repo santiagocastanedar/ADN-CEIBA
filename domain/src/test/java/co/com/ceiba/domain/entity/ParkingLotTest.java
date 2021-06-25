@@ -18,7 +18,7 @@ public class ParkingLotTest {
 
         //Act
         ParkingInformationRate parkingInformationRate = new ParkingInformationRate(1000,8000,500,4000,9,24);
-        ParkingLot parkingLotExpected =  new ParkingLot(id,name,parkingInformationRate);
+        ParkingLot parkingLotExpected =  new ParkingLot(id,name,parkingInformationRate,null,0,0);
 
         //Assert
         Assert.assertNotNull(parkingLotExpected);
@@ -33,7 +33,7 @@ public class ParkingLotTest {
 
         //Act
         try {
-            ParkingLot parkingLotExpected =  new ParkingLot(id,name,null);
+            ParkingLot parkingLotExpected =  new ParkingLot(id,name,null,null,0,0);
             Assert.fail();
         }catch (ParkingInformationException ex){
             //Assert

@@ -5,10 +5,8 @@ import org.junit.Test;
 
 import co.com.ceiba.domain.entity.VehicleType;
 import co.com.ceiba.domain.exception.WrongPlateException;
-import co.com.ceiba.domain.exception.WrongRateException;
 import co.com.ceiba.domain.exception.WrongVehicleInformationException;
 import co.com.ceiba.domain.exception.WrongVehicleTypeException;
-import co.com.ceiba.domain.valueobject.ParkingInformationRate;
 import co.com.ceiba.domain.valueobject.VehicleInformation;
 
 import static org.junit.Assert.*;
