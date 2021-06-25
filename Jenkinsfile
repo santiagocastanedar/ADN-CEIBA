@@ -41,6 +41,7 @@ pipeline {
         echo "------------>Compile & Unit Tests<------------"
         sh './gradlew clean'
         sh './gradlew test'
+        sh './gradlew jacocoTestReport'
       }
     }
 

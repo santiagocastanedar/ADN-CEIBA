@@ -7,4 +7,6 @@ public interface VehicleRepository {
     boolean vehicleExist(String plate);
 
     void parkCar(Vehicle vehicle);
+
+    double getOutParking(Vehicle vehicle);
 }
