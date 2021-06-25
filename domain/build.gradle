@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.library'
+    id 'jacoco'
 }
 
 android {
@@ -27,7 +28,32 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
+tasks.withType(Test) {
+    jacoco.includeNoLocationClasses = true
+    testLogging {
+        exceptionFormat "full"
+        events "skipped", "passed", "failed"
+        showStandardStreams true
+    }
+    finalizedBy(jacocoTestReport)
+}
 
+task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+
+    def fileFilter = ['**/R.class', '**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*', '**/data/models/*']
+    def debugTree = fileTree(dir: "${buildDir}/intermediates/javac/debug", excludes: fileFilter)
+    def mainSrc = "${project.projectDir}/src/main/java"
+
+    sourceDirectories.from(files([mainSrc]))
+    classDirectories.from(files([debugTree]))
+    executionData.from(fileTree(dir: "$buildDir", includes: [
+            "jacoco/testDebugUnitTest.exec",
+            "outputs/code-coverage/connected/*coverage.ec"]))
+}
 dependencies {
     testImplementation 'junit:junit:4.+'
     testImplementation 'org.mockito:mockito-core:3.3.3'
