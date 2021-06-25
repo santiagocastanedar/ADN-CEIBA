@@ -2,6 +2,8 @@ package co.com.ceiba.domain.aggregate;
 
 import co.com.ceiba.domain.entity.VehicleType;
 import co.com.ceiba.domain.exception.WrongPlateException;
+import co.com.ceiba.domain.exception.WrongVehicleInformationException;
+import co.com.ceiba.domain.exception.WrongVehicleTypeException;
 import co.com.ceiba.domain.valueobject.VehicleInformation;
 
 public class Vehicle {
@@ -15,8 +17,9 @@ public class Vehicle {
         }else{
             throw new WrongPlateException();
         }
-        this.vehicleType = vehicleType;
-        this.vehicleInformation = vehicleInformation;
+        setVehicleInformation(vehicleInformation);
+        setVehicleType(vehicleType);
+
     }
 
     public String getPlate() {
@@ -32,6 +35,9 @@ public class Vehicle {
     }
 
     public void setVehicleInformation(VehicleInformation vehicleInformation) {
+        if(vehicleInformation == null){
+            throw new WrongVehicleInformationException();
+        }
         this.vehicleInformation = vehicleInformation;
     }
 
@@ -40,6 +46,9 @@ public class Vehicle {
     }
 
     public void setVehicleType(VehicleType vehicleType) {
+        if(vehicleType == null){
+            throw new WrongVehicleTypeException();
+        }
         this.vehicleType = vehicleType;
     }
 
