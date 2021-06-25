@@ -24,10 +24,7 @@ public class ParkingInformationRate {
     }
 
     public void setRateCarPerHour(double rateCarPerHour) {
-        if(!validateRate(rateCarPerHour)){
-            //TODO
-            throw new WrongRateException();
-        }
+        validateRate(rateCarPerHour);
         this.rateCarPerHour = rateCarPerHour;
     }
 
@@ -36,10 +33,7 @@ public class ParkingInformationRate {
     }
 
     public void setRateCarPerDay(double rateCarPerDay) {
-        if(!validateRate(rateCarPerDay)){
-            //TODO
-            throw new WrongRateException();
-        }
+        validateRate(rateCarPerDay);
         this.rateCarPerDay = rateCarPerDay;
     }
 
@@ -48,10 +42,7 @@ public class ParkingInformationRate {
     }
 
     public void setRateMotorcyclePerHour(double rateMotorcyclePerHour) {
-        if(!validateRate(rateMotorcyclePerHour)){
-            //TODO
-            throw new WrongRateException();
-        }
+        validateRate(rateMotorcyclePerHour);
         this.rateMotorcyclePerHour = rateMotorcyclePerHour;
     }
 
@@ -60,10 +51,7 @@ public class ParkingInformationRate {
     }
 
     public void setRateMotorcyclePerDay(double rateMotorcyclePerDay) {
-        if(!validateRate(rateMotorcyclePerDay)){
-            //TODO
-            throw new WrongRateException();
-        }
+        validateRate(rateMotorcyclePerDay);
         this.rateMotorcyclePerDay = rateMotorcyclePerDay;
     }
 
@@ -83,11 +71,9 @@ public class ParkingInformationRate {
         this.hourEndDay = hourEndDay;
     }
 
-    private boolean validateRate(double rate){
+    private void validateRate(double rate){
         if(rate <= 0){
-            return false;
-        }else{
-            return true;
+            throw new WrongRateException();
         }
 
     }
