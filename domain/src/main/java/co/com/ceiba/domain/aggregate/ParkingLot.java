@@ -1,24 +1,24 @@
-package co.com.ceiba.domain.entity;
+package co.com.ceiba.domain.aggregate;
 
 import java.util.List;
 
-import co.com.ceiba.domain.aggregate.Vehicle;
+import co.com.ceiba.domain.entity.Vehicle;
 import co.com.ceiba.domain.exception.ParkingInformationException;
 import co.com.ceiba.domain.valueobject.ParkingInformationRate;
 
 public class ParkingLot {
     private int id;
     private String name;
-    private int maxQuaintityCar;
+    private int maxQuantityCar;
     private int maxQuantityMotorcycle;
     private ParkingInformationRate parkingInformationRate;
     private List<Vehicle> vehicleList;
 
-    public ParkingLot(int id, String name, ParkingInformationRate parkingInformationRate,List<Vehicle> vehicles,int maxQuaintityCar,int maxQuantityMotorcycle) {
+    public ParkingLot(int id, String name, ParkingInformationRate parkingInformationRate, List<Vehicle> vehicles, int maxQuantityCar, int maxQuantityMotorcycle) {
         this.id = id;
         this.name = name;
         this.vehicleList = vehicles;
-        setMaxQuaintityCar(maxQuaintityCar);
+        setMaxQuantityCar(maxQuantityCar);
         setMaxQuantityMotorcycle(maxQuantityMotorcycle);
         setParkingInformationRate(parkingInformationRate);
     }
@@ -58,15 +58,15 @@ public class ParkingLot {
         this.vehicleList = vehicleList;
     }
 
-    public int getMaxQuaintityCar() {
-        return maxQuaintityCar;
+    public int getMaxQuantityCar() {
+        return maxQuantityCar;
     }
 
-    public void setMaxQuaintityCar(int maxQuaintityCar) {
-        if(maxQuaintityCar == 0){
-            maxQuaintityCar = 20;
+    public void setMaxQuantityCar(int maxQuantityCar) {
+        if(maxQuantityCar == 0){
+            maxQuantityCar = 20;
         }
-        this.maxQuaintityCar = maxQuaintityCar;
+        this.maxQuantityCar = maxQuantityCar;
     }
 
     public int getMaxQuantityMotorcycle() {

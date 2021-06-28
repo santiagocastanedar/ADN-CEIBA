@@ -1,15 +1,15 @@
-package co.com.ceiba.domain.aggregate;
+package co.com.ceiba.domain.entity;
 
 import org.junit.Assert;
 import org.junit.Test;
 
+import co.com.ceiba.domain.entity.Vehicle;
 import co.com.ceiba.domain.entity.VehicleType;
 import co.com.ceiba.domain.exception.WrongPlateException;
 import co.com.ceiba.domain.exception.WrongVehicleInformationException;
 import co.com.ceiba.domain.exception.WrongVehicleTypeException;
 import co.com.ceiba.domain.valueobject.VehicleInformation;
 
-import static org.junit.Assert.*;
 public class VehicleTest {
     @Test
     public void VehicleCorrectInformation(){

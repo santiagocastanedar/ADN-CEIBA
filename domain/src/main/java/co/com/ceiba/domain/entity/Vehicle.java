@@ -1,4 +1,4 @@
-package co.com.ceiba.domain.aggregate;
+package co.com.ceiba.domain.entity;
 
 import co.com.ceiba.domain.entity.VehicleType;
 import co.com.ceiba.domain.exception.WrongPlateException;

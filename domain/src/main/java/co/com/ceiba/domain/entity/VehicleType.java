@@ -1,7 +1,5 @@
 package co.com.ceiba.domain.entity;
 
-import co.com.ceiba.domain.valueobject.ParkingInformationRate;
-
 public class VehicleType {
     private int id;
     private String name;

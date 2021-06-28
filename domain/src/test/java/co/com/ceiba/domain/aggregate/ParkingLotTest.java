@@ -1,12 +1,11 @@
-package co.com.ceiba.domain.entity;
+package co.com.ceiba.domain.aggregate;
 
 import org.junit.Assert;
 import org.junit.Test;
 
+import co.com.ceiba.domain.aggregate.ParkingLot;
 import co.com.ceiba.domain.exception.ParkingInformationException;
 import co.com.ceiba.domain.valueobject.ParkingInformationRate;
-
-import static org.junit.Assert.*;
 
 public class ParkingLotTest {
 

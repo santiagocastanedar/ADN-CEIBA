@@ -1,7 +1,6 @@
 package co.com.ceiba.domain.repository;
 
-import co.com.ceiba.domain.aggregate.Vehicle;
-import co.com.ceiba.domain.entity.ParkingLot;
+import co.com.ceiba.domain.entity.Vehicle;
 import co.com.ceiba.domain.entity.VehicleType;
 
 public interface ParkingLotRepository {
