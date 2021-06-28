@@ -1,5 +1,8 @@
 package co.com.ceiba.domain.entity;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import co.com.ceiba.domain.entity.VehicleType;
 import co.com.ceiba.domain.exception.WrongPlateException;
 import co.com.ceiba.domain.exception.WrongVehicleInformationException;
@@ -10,6 +13,9 @@ public class Vehicle {
     private String plate;
     private VehicleInformation vehicleInformation;
     private VehicleType vehicleType;
+    private String entryDate;
+    private String departureDate;
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     public Vehicle(String plate,VehicleType vehicleType,VehicleInformation vehicleInformation){
         if(validatePlate(plate)){
@@ -19,6 +25,7 @@ public class Vehicle {
         }
         setVehicleInformation(vehicleInformation);
         setVehicleType(vehicleType);
+        this.entryDate =  dateFormat.format(new Date());
 
     }
 
@@ -52,6 +59,18 @@ public class Vehicle {
         this.vehicleType = vehicleType;
     }
 
+    public String getEntryDate() {
+        return entryDate;
+    }
+
+    public String getDepartureDate() {
+        return departureDate;
+    }
+
+    public void setDepartureDate(String departureDate) {
+        this.departureDate = departureDate;
+    }
+
     private boolean validatePlate(String plate){
         if(plate.length() == 6 ){
             return true;
@@ -59,5 +78,6 @@ public class Vehicle {
             return false;
         }
     }
+
 
 }

@@ -3,6 +3,7 @@ package co.com.ceiba.dataaccess.dao;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import co.com.ceiba.dataaccess.entity.VehicleRoom;
 
@@ -14,4 +15,7 @@ public interface VehicleDao {
 
     @Insert
     void insertVehicle(VehicleRoom vehicleRoom);
+
+    @Update
+    public void updateDepartureDate(VehicleRoom vehicleRoom);
 }

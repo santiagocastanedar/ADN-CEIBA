@@ -1,7 +1,12 @@
 package co.com.ceiba.domain.entity;
 
+import android.util.Log;
+
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import co.com.ceiba.domain.entity.Vehicle;
 import co.com.ceiba.domain.entity.VehicleType;
@@ -77,6 +82,22 @@ public class VehicleTest {
             Assert.assertEquals(expectedMessage,ex.getMessage());
         }
 
+    }
+
+    @Test
+    public void EntryDateCorrect(){
+        //Arrange
+        String plate = "FGU249";
+        VehicleInformation vehicleInformation =  new VehicleInformation(2600);
+        VehicleType vehicleType = new VehicleType(1,"moto");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String dateExpected = dateFormat.format(new Date());
+
+        //Act
+        Vehicle vehicle =  new Vehicle(plate,vehicleType,vehicleInformation);
+        String entryDate = vehicle.getEntryDate();
+        //Assert
+        Assert.assertEquals(dateExpected,entryDate);
     }
 
 }

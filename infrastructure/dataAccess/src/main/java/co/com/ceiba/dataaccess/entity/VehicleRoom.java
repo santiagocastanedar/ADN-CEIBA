@@ -23,6 +23,10 @@ public class VehicleRoom {
     public int vehicleType;
     @ColumnInfo(name="parkingLotId")
     public int parkingLotId;
+    @ColumnInfo(name="entryDate")
+    public String entryDate;
+    @ColumnInfo(name="departureDate")
+    public String departureDate;
 
     public VehicleRoom(String plate, String color, String brand, int cylinder, int vehicleType, int parkingLotId) {
         this.plate = plate;
