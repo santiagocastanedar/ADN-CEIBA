@@ -3,7 +3,6 @@ package co.com.ceiba.domain.entity;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import co.com.ceiba.domain.entity.VehicleType;
 import co.com.ceiba.domain.exception.WrongPlateException;
 import co.com.ceiba.domain.exception.WrongVehicleInformationException;
 import co.com.ceiba.domain.exception.WrongVehicleTypeException;
@@ -18,11 +17,7 @@ public class Vehicle {
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     public Vehicle(String plate,VehicleType vehicleType,VehicleInformation vehicleInformation){
-        if(validatePlate(plate)){
-            this.plate = plate;
-        }else{
-            throw new WrongPlateException();
-        }
+        validatePlate(plate);
         setVehicleInformation(vehicleInformation);
         setVehicleType(vehicleType);
         this.entryDate =  dateFormat.format(new Date());
@@ -71,12 +66,11 @@ public class Vehicle {
         this.departureDate = departureDate;
     }
 
-    private boolean validatePlate(String plate){
-        if(plate.length() == 6 ){
-            return true;
-        }else{
-            return false;
+    private void validatePlate(String plate){
+        if(plate.length() != 6 ){
+            throw new WrongPlateException();
         }
+        this.plate = plate;
     }
 
 

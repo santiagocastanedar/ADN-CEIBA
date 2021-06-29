@@ -1,5 +1,6 @@
 package co.com.ceiba.dataaccess.entity;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -11,6 +12,7 @@ import androidx.room.PrimaryKey;
         @ForeignKey(entity = VehicleTypeRoom.class,parentColumns = "id",childColumns = "vehicleType")})
 public class VehicleRoom {
     @PrimaryKey
+    @NonNull
     public String plate;
 
     @ColumnInfo(name="color")
@@ -28,12 +30,13 @@ public class VehicleRoom {
     @ColumnInfo(name="departureDate")
     public String departureDate;
 
-    public VehicleRoom(String plate, String color, String brand, int cylinder, int vehicleType, int parkingLotId) {
+    public VehicleRoom(String plate, String color, String brand, int cylinder, int vehicleType, int parkingLotId, String entryDate) {
         this.plate = plate;
         this.color = color;
         this.brand = brand;
         this.cylinder = cylinder;
         this.vehicleType = vehicleType;
         this.parkingLotId = parkingLotId;
+        this.entryDate = entryDate;
     }
 }

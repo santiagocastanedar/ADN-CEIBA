@@ -2,16 +2,25 @@ package co.com.ceiba.domain.service;
 
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnit;
+import org.mockito.junit.MockitoRule;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import co.com.ceiba.domain.aggregate.ParkingLot;
 import co.com.ceiba.domain.entity.Vehicle;
 import co.com.ceiba.domain.entity.VehicleType;
 import co.com.ceiba.domain.exception.DateException;
+import co.com.ceiba.domain.exception.ParkingLotAlreadyExistsException;
+import co.com.ceiba.domain.exception.VehicleAlreadyExistsException;
 import co.com.ceiba.domain.exception.WrongVehicleTypeException;
+import co.com.ceiba.domain.repository.ParkingLotRepository;
 import co.com.ceiba.domain.valueobject.ParkingInformationRate;
 import co.com.ceiba.domain.valueobject.VehicleInformation;
 
@@ -19,19 +28,18 @@ import static org.junit.Assert.*;
 
 public class ParkingLotServiceTest {
 
-    ParkingLot parkingLot = new ParkingLot(1,
-            "Santiago's",
-            new ParkingInformationRate(1000,
-                    8000,
-                    500,
-                    4000,
-                    9,
-                    24),
-            null,
-            20,
-            10);
+    @Rule
+    public MockitoRule mockitoRule = MockitoJUnit.rule();
 
+    @Mock
+    private ParkingLotRepository parkingLotRepository;
+    @Mock
+    private ParkingLot parkingLot;
+
+    @InjectMocks
     ParkingLotService parkingLotService = new ParkingLotService();
+
+    @Before
 
 
 
@@ -64,6 +72,23 @@ public class ParkingLotServiceTest {
         }
     }
 
+    /*@Test
+    public void vehicleAlreadyExistInParkingLot() {
+        //Arrange
+
+        String expectedMessage = "El vehiculo ya se encuentra parqueado";
+        Vehicle vehicle =  new Vehicle("FGU259",
+                new VehicleType(1,"Carro"),new VehicleInformation(2600));
+
+        try {
+            //Act
+            boolean vehicleSaved = parkingLotService.allowEntry(vehicle);
+            Assert.assertTrue(vehicleSaved);
+        }catch (VehicleAlreadyExistsException ex){
+            //Assert
+            Assert.assertEquals(expectedMessage,ex.getMessage());
+        }
+    }*/
     /*@Test
     public void calculatePaymentCarPerDay() {
         //Arrange

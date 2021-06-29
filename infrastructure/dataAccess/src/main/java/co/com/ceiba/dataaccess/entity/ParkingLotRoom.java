@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity(tableName = "parkingLots")
 public class ParkingLotRoom {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public int id;
 
     @ColumnInfo(name="name")
@@ -31,8 +31,7 @@ public class ParkingLotRoom {
     @ColumnInfo(name="hourEndDay")
     public int hourEndDay;
 
-    public ParkingLotRoom(int id, String name, int maxQuantityCar, int maxQuantityMotorcycle, double rateCarPerHour, double rateCarPerDay, double rateMotorcyclePerHour, double rateMotorcyclePerDay, int hourStartDay, int hourEndDay) {
-        this.id = id;
+    public ParkingLotRoom(String name, int maxQuantityCar, int maxQuantityMotorcycle, double rateCarPerHour, double rateCarPerDay, double rateMotorcyclePerHour, double rateMotorcyclePerDay, int hourStartDay, int hourEndDay) {
         this.name = name;
         this.maxQuantityCar = maxQuantityCar;
         this.maxQuantityMotorcycle = maxQuantityMotorcycle;

@@ -5,9 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity"
-    >
-
+    tools:context=".ui.MainActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -29,7 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvDescription"
-                android:text="This is an application where you can have control of your parkingLot"
+                android:text="Aplicación para el manejo de su estacionamiento"
                 android:textSize="30dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="40dp"
@@ -51,7 +49,10 @@
                 android:layout_marginTop="40dp"
                 android:text="Add Vehicle"
                 android:layout_gravity="center_horizontal"
-                android:visibility="visible"/>
+                android:visibility="gone"/>
         </LinearLayout>
     </ScrollView>
+
+
+
 </LinearLayout>

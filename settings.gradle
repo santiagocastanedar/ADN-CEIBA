@@ -2,3 +2,4 @@ rootProject.name = "ADN CEIBA"
 include ':app'
 include ':domain'
 include ':infrastructure:dataAccess'
+include ':application'

@@ -8,15 +8,14 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "vehicles_type",
         foreignKeys = {@ForeignKey(entity = ParkingLotRoom.class,parentColumns = "id",childColumns = "parkingLotId")})
 public class VehicleTypeRoom {
-    @PrimaryKey
-    private int id;
+    @PrimaryKey(autoGenerate = true)
+    public int id;
     @ColumnInfo(name="name")
-    private String name;
+    public String name;
     @ColumnInfo(name="parkingLotId")
     public int parkingLotId;
 
-    public VehicleTypeRoom(int id, String name, int parkingLotId) {
-        this.id = id;
+    public VehicleTypeRoom(String name, int parkingLotId) {
         this.name = name;
         this.parkingLotId = parkingLotId;
     }

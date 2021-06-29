@@ -36,6 +36,7 @@ public class ParkingLotService {
         int startDay = parkingLot.getParkingInformationRate().getHourStartDay();
         int endtDay = parkingLot.getParkingInformationRate().getHourEndDay();
         long timeInParkinglot = calculateTimeInParkingLot(entryDate,departureDate);
+
         if(vehicle.getVehicleType().getName().equals("Carro")){
             return calculatePaymentCar(timeInParkinglot,startDay,endtDay);
         }else{
@@ -69,7 +70,7 @@ public class ParkingLotService {
     }
 
 
-    public void allowEntry(Vehicle vehicle){
+    public boolean allowEntry(Vehicle vehicle){
         if(parkingLotRepository.vehicleExist(vehicle.getPlate())){
             throw new VehicleAlreadyExistsException();
         }
@@ -84,6 +85,8 @@ public class ParkingLotService {
             }
             parkingLotRepository.saveVehicle(vehicle);
         }
+
+        return true;
     }
 
     public long calculateTimeInParkingLot(String entryDate,String departureDate){

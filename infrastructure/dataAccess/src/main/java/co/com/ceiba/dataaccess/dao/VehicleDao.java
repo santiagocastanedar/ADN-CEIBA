@@ -13,6 +13,9 @@ public interface VehicleDao {
     @Query("SELECT * FROM vehicles WHERE plate IN (:plate)")
     VehicleRoom getVehicle(String plate);
 
+    @Query("SELECT COUNT(*) FROM vehicles WHERE vehicleType IN (:id)")
+    int getVehicleQuantity(int id);
+
     @Insert
     void insertVehicle(VehicleRoom vehicleRoom);
 
