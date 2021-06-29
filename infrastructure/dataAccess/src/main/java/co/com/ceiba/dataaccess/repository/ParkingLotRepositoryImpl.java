@@ -28,7 +28,7 @@ public class ParkingLotRepositoryImpl implements ParkingLotRepository {
     @Override
     public boolean saveVehicle(Vehicle vehicle) {
         db.vehicleDao().insertVehicle(new VehicleMapper().vehicleMapper(vehicle));
-        return false;
+        return true;
     }
 
     @Override
