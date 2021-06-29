@@ -23,6 +23,8 @@ public class VehicleRoom {
     public int cylinder;
     @ColumnInfo(name="vehicleType")
     public int vehicleType;
+    @ColumnInfo(name="vehicleTypeName")
+    public String vehicleTypeName;
     @ColumnInfo(name="parkingLotId")
     public int parkingLotId;
     @ColumnInfo(name="entryDate")
@@ -30,12 +32,13 @@ public class VehicleRoom {
     @ColumnInfo(name="departureDate")
     public String departureDate;
 
-    public VehicleRoom(String plate, String color, String brand, int cylinder, int vehicleType, int parkingLotId, String entryDate) {
+    public VehicleRoom(String plate, String color, String brand, int cylinder, int vehicleType,String vehicleTypeName, int parkingLotId, String entryDate) {
         this.plate = plate;
         this.color = color;
         this.brand = brand;
         this.cylinder = cylinder;
         this.vehicleType = vehicleType;
+        this.vehicleTypeName = vehicleTypeName;
         this.parkingLotId = parkingLotId;
         this.entryDate = entryDate;
     }

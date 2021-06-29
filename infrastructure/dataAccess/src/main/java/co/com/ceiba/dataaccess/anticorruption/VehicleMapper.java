@@ -12,13 +12,13 @@ public class VehicleMapper {
                 vehicle.getVehicleInformation().getColor(),
                 vehicle.getVehicleInformation().getBrand(),
                 vehicle.getVehicleInformation().getCylinder(),
-                vehicle.getVehicleType().getId(),1,
+                vehicle.getVehicleType().getId(),vehicle.getVehicleType().getName(),1,
                 vehicle.getEntryDate());
     }
 
     public Vehicle vehicleRoomToVehcleMapper(VehicleRoom vehicleRoom){
         return new Vehicle(vehicleRoom.plate,
-                new VehicleType(vehicleRoom.vehicleType,"carro"),
+                new VehicleType(vehicleRoom.vehicleType,vehicleRoom.vehicleTypeName),
                 new VehicleInformation(vehicleRoom.cylinder));
     }
 }

@@ -30,7 +30,7 @@ public class ParkingLotActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parking_lot);
-        parkingLotViewModel = new ViewModelProvider(this).get(ParkingLotViewModel.class);
+        //parkingLotViewModel = new ViewModelProvider(this).get(ParkingLotViewModel.class);
         init();
 
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +64,7 @@ public class ParkingLotActivity extends AppCompatActivity {
                 rateCarPerDay,ratMotorPerHour,ratMotorPerDay,startDay,endDay);
 
         ParkingLot parkingLot = new ParkingLot(1,name,parkingInformationRate,null,maxQuantityCar,maxQuantityMotor);
-        parkingLotViewModel.createParkingLot(parkingLot);
+        //parkingLotViewModel.createParkingLot(parkingLot);
 
     }
 
