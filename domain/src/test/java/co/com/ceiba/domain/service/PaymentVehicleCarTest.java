@@ -44,4 +44,33 @@ public class PaymentVehicleCarTest {
         //Assert
         Assert.assertEquals(totalExpected,total,3);
     }
+
+    @Test
+    public void calculatePaymentVehicleDay() {
+        //Arrange
+        String entryDate = ("2021-06-28 7:00");
+        String departureDate = ("2021-06-29 5:00");
+        int startDay = parkingLot.getParkingInformationRate().getHourStartDay();
+        int endDay = parkingLot.getParkingInformationRate().getHourEndDay();
+        long time = parkingLot.calculateTimeInParkingLot(entryDate,departureDate );
+        double totalExpected = 8000;
+        //Act
+        double total = paymentVehicleCar.calculatePaymentVehicle(time,startDay,endDay);
+        //Assert
+        Assert.assertEquals(totalExpected,total,3);
+    }
+    @Test
+    public void calculatePaymentVehicleHour() {
+        //Arrange
+        String entryDate = ("2021-06-29 3:00");
+        String departureDate = ("2021-06-29 5:00");
+        int startDay = parkingLot.getParkingInformationRate().getHourStartDay();
+        int endDay = parkingLot.getParkingInformationRate().getHourEndDay();
+        long time = parkingLot.calculateTimeInParkingLot(entryDate,departureDate );
+        double totalExpected = 2000;
+        //Act
+        double total = paymentVehicleCar.calculatePaymentVehicle(time,startDay,endDay);
+        //Assert
+        Assert.assertEquals(totalExpected,total,3);
+    }
 }

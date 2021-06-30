@@ -56,4 +56,35 @@ public class PaymentVehicleMotorcycleTest {
         //Assert
         Assert.assertEquals(totalExpected,total,3);
     }
+
+    @Test
+    public void calculatePaymentVehicleDay() {
+        //Arrange
+        motorcycle = new Motorcycle("FGU249",entryDate,400);
+        paymentVehicleMotorcycle = new PaymentVehicleMotorcycle(parkingLot,motorcycle);
+        String departureDate = ("2021-06-29 15:00");
+        int startDay = parkingLot.getParkingInformationRate().getHourStartDay();
+        int endDay = parkingLot.getParkingInformationRate().getHourEndDay();
+        long time = parkingLot.calculateTimeInParkingLot(motorcycle.getEntryDate(),departureDate );
+        double totalExpected = 4000;
+        //Act
+        double total = paymentVehicleMotorcycle.calculatePaymentVehicle(time,startDay,endDay);
+        //Assert
+        Assert.assertEquals(totalExpected,total,3);
+    }
+    @Test
+    public void calculatePaymentVehicleHour() {
+        //Arrange
+        motorcycle = new Motorcycle("FGU249",entryDate,400);
+        paymentVehicleMotorcycle = new PaymentVehicleMotorcycle(parkingLot,motorcycle);
+        String departureDate = ("2021-06-28 17:00");
+        int startDay = parkingLot.getParkingInformationRate().getHourStartDay();
+        int endDay = parkingLot.getParkingInformationRate().getHourEndDay();
+        long time = parkingLot.calculateTimeInParkingLot(motorcycle.getEntryDate(),departureDate );
+        double totalExpected = 500;
+        //Act
+        double total = paymentVehicleMotorcycle.calculatePaymentVehicle(time,startDay,endDay);
+        //Assert
+        Assert.assertEquals(totalExpected,total,3);
+    }
 }

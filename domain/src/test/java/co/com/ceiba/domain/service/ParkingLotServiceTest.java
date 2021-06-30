@@ -13,9 +13,7 @@ import org.mockito.junit.MockitoRule;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import co.com.ceiba.domain.aggregate.ParkingLot;
 import co.com.ceiba.domain.entity.Car;
-import co.com.ceiba.domain.exception.DateException;
 import co.com.ceiba.domain.exception.VehicleAlreadyExistsException;
 import co.com.ceiba.domain.repository.ParkingLotRepository;
 

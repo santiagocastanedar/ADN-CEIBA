@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import co.com.ceiba.domain.entity.Vehicle;
-import co.com.ceiba.domain.exception.DateException;
+import co.com.ceiba.domain.exception.WrongDateException;
 import co.com.ceiba.domain.exception.ParkingInformationException;
 import co.com.ceiba.domain.valueobject.ParkingInformationRate;
 
@@ -93,7 +93,7 @@ public class ParkingLot {
             difference = difference / (60*60*1000);
 
         }catch (Exception e){
-            throw new DateException();
+            throw new WrongDateException();
         }
         return difference;
     }

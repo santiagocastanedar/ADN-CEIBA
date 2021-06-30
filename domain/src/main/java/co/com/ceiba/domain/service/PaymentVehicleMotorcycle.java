@@ -27,7 +27,7 @@ public class PaymentVehicleMotorcycle implements VehiclePaymentRepository {
         }else if(time > endDay){
             total = parkingLot.getParkingInformationRate().getRateMotorcyclePerDay() + ((time - endDay)*parkingLot.getParkingInformationRate().getRateMotorcyclePerHour());
         }else{
-            total = parkingLot.getParkingInformationRate().getRateMotorcyclePerDay() * time;
+            total = parkingLot.getParkingInformationRate().getRateMotorcyclePerHour() * time;
         }
         if(motorcycle.getCylinder() > MAX_CYLINDER_MOTORCYCLE){
             total += ADDITIONAL_PRICE_MOTORCYCLE;
