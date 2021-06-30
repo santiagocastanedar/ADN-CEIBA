@@ -10,7 +10,7 @@ public class Motorcycle extends Vehicle{
 
     public Motorcycle(String plate, String entryDate, int cylinder) {
         super(plate, entryDate);
-        this.cylinder = cylinder;
+        setCylinder(cylinder);
     }
 
     public int getCylinder() {
