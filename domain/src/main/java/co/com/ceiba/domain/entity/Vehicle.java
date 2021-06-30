@@ -13,7 +13,7 @@ public class Vehicle {
     private String departureDate;
 
     public Vehicle(String plate, String entryDate) {
-        this.plate = plate;
+        validatePlate(plate);
         this.entryDate = entryDate;
     }
 
