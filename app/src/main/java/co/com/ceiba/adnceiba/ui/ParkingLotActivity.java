@@ -1,7 +1,6 @@
 package co.com.ceiba.adnceiba.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,9 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import co.com.ceiba.adnceiba.R;
-import co.com.ceiba.adnceiba.viewmodel.ParkingLotViewModel;
 import co.com.ceiba.domain.aggregate.ParkingLot;
-import co.com.ceiba.domain.service.ParkingLotService;
 import co.com.ceiba.domain.valueobject.ParkingInformationRate;
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -25,7 +22,7 @@ public class ParkingLotActivity extends AppCompatActivity {
     private EditText txtRateMotorcycleDay,txtRateMotorcyclePerHour,txtRateCarPerDay,txtRateCarPerHour,txtHoraEnd,txtHoraStart,
             txtMaxQuantityMotorcycle,txtMaxQuantityCar,txtName;
 
-    private ParkingLotViewModel parkingLotViewModel;
+    //private ParkingLotViewModel parkingLotViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

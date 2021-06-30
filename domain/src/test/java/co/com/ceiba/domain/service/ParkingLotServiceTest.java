@@ -6,25 +6,18 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import co.com.ceiba.domain.aggregate.ParkingLot;
-import co.com.ceiba.domain.entity.Vehicle;
-import co.com.ceiba.domain.entity.VehicleType;
+import co.com.ceiba.domain.entity.Car;
 import co.com.ceiba.domain.exception.DateException;
-import co.com.ceiba.domain.exception.ParkingLotAlreadyExistsException;
 import co.com.ceiba.domain.exception.VehicleAlreadyExistsException;
-import co.com.ceiba.domain.exception.WrongVehicleTypeException;
 import co.com.ceiba.domain.repository.ParkingLotRepository;
-import co.com.ceiba.domain.valueobject.ParkingInformationRate;
-import co.com.ceiba.domain.valueobject.VehicleInformation;
-
-import static org.junit.Assert.*;
 
 public class ParkingLotServiceTest {
 
@@ -33,17 +26,34 @@ public class ParkingLotServiceTest {
 
     @Mock
     private ParkingLotRepository parkingLotRepository;
-    @Mock
-    private ParkingLot parkingLot;
 
     @InjectMocks
-    ParkingLotService parkingLotService = new ParkingLotService();
+    ParkingLotService parkingLotService;
 
     @Before
-
-
+    public void init(){
+        MockitoAnnotations.initMocks(this);
+    }
 
     @Test
+    public void vehicleAlreadyExistInParkingLot() {
+        //Arrange
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String date = dateFormat.format(new Date());
+        String expectedMessage = "El vehiculo ya se encuentra parqueado";
+        Car car = new Car("FGU249",date);
+
+        try {
+            //Act
+            parkingLotService.saveVehicle(car);
+            Assert.fail();
+        }catch (VehicleAlreadyExistsException ex){
+            //Assert
+            Assert.assertEquals(expectedMessage,ex.getMessage());
+        }
+    }
+
+    /*@Test
     public void calculateTimeInParkingLot() {
         //Arrange
         long timeExpected = 5;
@@ -70,25 +80,9 @@ public class ParkingLotServiceTest {
             //Assert
             Assert.assertEquals(expectedMessage,ex.getMessage());
         }
-    }
-
-    /*@Test
-    public void vehicleAlreadyExistInParkingLot() {
-        //Arrange
-
-        String expectedMessage = "El vehiculo ya se encuentra parqueado";
-        Vehicle vehicle =  new Vehicle("FGU259",
-                new VehicleType(1,"Carro"),new VehicleInformation(2600));
-
-        try {
-            //Act
-            boolean vehicleSaved = parkingLotService.allowEntry(vehicle);
-            Assert.assertTrue(vehicleSaved);
-        }catch (VehicleAlreadyExistsException ex){
-            //Assert
-            Assert.assertEquals(expectedMessage,ex.getMessage());
-        }
     }*/
+
+
     /*@Test
     public void calculatePaymentCarPerDay() {
         //Arrange

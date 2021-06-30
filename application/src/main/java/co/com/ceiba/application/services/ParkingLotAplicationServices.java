@@ -2,7 +2,6 @@ package co.com.ceiba.application.services;
 
 import javax.inject.Inject;
 
-import co.com.ceiba.domain.aggregate.ParkingLot;
 import co.com.ceiba.domain.service.ParkingLotService;
 
 public class ParkingLotAplicationServices {
@@ -11,10 +10,9 @@ public class ParkingLotAplicationServices {
     ParkingLotService parkingLotService;
 
     @Inject
-    public ParkingLotAplicationServices() {
+    public ParkingLotAplicationServices(){
+
     }
 
-    public void saveParkingLot(ParkingLot parkingLot){
-        parkingLotService.createParkingLot(parkingLot);
-    }
+
 }

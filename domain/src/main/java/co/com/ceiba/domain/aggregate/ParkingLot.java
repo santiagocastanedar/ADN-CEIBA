@@ -1,8 +1,11 @@
 package co.com.ceiba.domain.aggregate;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import co.com.ceiba.domain.entity.Vehicle;
+import co.com.ceiba.domain.exception.DateException;
 import co.com.ceiba.domain.exception.ParkingInformationException;
 import co.com.ceiba.domain.valueobject.ParkingInformationRate;
 
@@ -78,5 +81,20 @@ public class ParkingLot {
             maxQuantityMotorcycle = 10;
         }
         this.maxQuantityMotorcycle = maxQuantityMotorcycle;
+    }
+
+    public long calculateTimeInParkingLot(String entryDate,String departureDate){
+        long difference = 0;
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            Date entryDateFormat = dateFormat.parse(entryDate);
+            Date departureDateFormat = dateFormat.parse(departureDate);
+            difference = Math.abs(entryDateFormat.getTime() - departureDateFormat.getTime());
+            difference = difference / (60*60*1000);
+
+        }catch (Exception e){
+            throw new DateException();
+        }
+        return difference;
     }
 }

@@ -13,6 +13,4 @@ public abstract class ParkingLotModule {
 
     @Binds
     public abstract ParkingLotRepository bindParkingLotRepository(ParkingLotRepositoryImpl parkingLotRepository);
-
-
 }

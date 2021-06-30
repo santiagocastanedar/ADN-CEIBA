@@ -1,27 +1,20 @@
 package co.com.ceiba.domain.entity;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 
 import co.com.ceiba.domain.exception.WrongPlateException;
-import co.com.ceiba.domain.exception.WrongVehicleInformationException;
-import co.com.ceiba.domain.exception.WrongVehicleTypeException;
-import co.com.ceiba.domain.valueobject.VehicleInformation;
+
+import static co.com.ceiba.domain.utils.Constant.PLATE_CHARACTERS_REQUIERE;
+
 
 public class Vehicle {
     private String plate;
-    private VehicleInformation vehicleInformation;
-    private VehicleType vehicleType;
     private String entryDate;
     private String departureDate;
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
-    public Vehicle(String plate,VehicleType vehicleType,VehicleInformation vehicleInformation){
-        validatePlate(plate);
-        setVehicleInformation(vehicleInformation);
-        setVehicleType(vehicleType);
-        this.entryDate =  dateFormat.format(new Date());
-
+    public Vehicle(String plate, String entryDate) {
+        this.plate = plate;
+        this.entryDate = entryDate;
     }
 
     public String getPlate() {
@@ -32,26 +25,8 @@ public class Vehicle {
         this.plate = plate;
     }
 
-    public VehicleInformation getVehicleInformation() {
-        return vehicleInformation;
-    }
-
-    public void setVehicleInformation(VehicleInformation vehicleInformation) {
-        if(vehicleInformation == null){
-            throw new WrongVehicleInformationException();
-        }
-        this.vehicleInformation = vehicleInformation;
-    }
-
-    public VehicleType getVehicleType() {
-        return vehicleType;
-    }
-
-    public void setVehicleType(VehicleType vehicleType) {
-        if(vehicleType == null){
-            throw new WrongVehicleTypeException();
-        }
-        this.vehicleType = vehicleType;
+    public void setEntryDate(String entryDate) {
+        this.entryDate = entryDate;
     }
 
     public String getEntryDate() {
@@ -67,7 +42,7 @@ public class Vehicle {
     }
 
     private void validatePlate(String plate){
-        if(plate.length() != 6 ){
+        if(plate.length() != PLATE_CHARACTERS_REQUIERE){
             throw new WrongPlateException();
         }
         this.plate = plate;
