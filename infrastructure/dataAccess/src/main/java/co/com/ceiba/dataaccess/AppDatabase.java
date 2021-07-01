@@ -6,12 +6,15 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import co.com.ceiba.dataaccess.dao.VehicleDao;
-import co.com.ceiba.dataaccess.entity.VehicleRoom;
+import co.com.ceiba.dataaccess.dao.CarDao;
+import co.com.ceiba.dataaccess.dao.MotorcycleDao;
+import co.com.ceiba.dataaccess.entity.CarRoom;
+import co.com.ceiba.dataaccess.entity.MotorcycleRoom;
 
-@Database(entities = {VehicleRoom.class},version = 1)
+@Database(entities = {CarRoom.class, MotorcycleRoom.class},version = 1)
 public abstract class AppDatabase extends RoomDatabase {
-    public abstract VehicleDao vehicleDao();
+    public abstract MotorcycleDao motorcycleDao();
+    public abstract CarDao carDao();
 
     public static volatile AppDatabase INSTANCE;
 

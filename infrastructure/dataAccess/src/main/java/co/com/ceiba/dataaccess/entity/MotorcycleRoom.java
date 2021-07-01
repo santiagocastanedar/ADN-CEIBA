@@ -3,12 +3,10 @@ package co.com.ceiba.dataaccess.entity;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-
-@Entity(tableName = "vehicles")
-public class VehicleRoom {
+@Entity(tableName = "motorcycles")
+public class MotorcycleRoom {
     @PrimaryKey
     @NonNull
     public String plate;
@@ -20,8 +18,9 @@ public class VehicleRoom {
     @ColumnInfo(name="departureDate")
     public String departureDate;
 
-    public VehicleRoom(@NonNull String plate, String entryDate) {
+    public MotorcycleRoom(@NonNull String plate, int cylinder, String entryDate) {
         this.plate = plate;
+        this.cylinder = cylinder;
         this.entryDate = entryDate;
     }
 }

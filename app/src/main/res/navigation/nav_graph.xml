@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/mainMenuFragment">
+
+    <fragment
+        android:id="@+id/parkingVehicleFragment"
+        android:name="co.com.ceiba.adnceiba.ui.ParkingVehicleFragment"
+        android:label="Añadir vehiculos"
+        tools:layout="@layout/fragment_parking_vehicle" />
+    <fragment
+        android:id="@+id/mainMenuFragment"
+        android:name="co.com.ceiba.adnceiba.ui.MainMenuFragment"
+        android:label="Menu principal"
+        tools:layout="@layout/fragment_main_menu">
+        <action
+            android:id="@+id/action_mainMenuFragment_to_parkingVehicleFragment"
+            app:destination="@id/parkingVehicleFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_vehiclesListFragment"
+            app:destination="@id/vehiclesListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vehiclesListFragment"
+        android:name="co.com.ceiba.adnceiba.ui.VehiclesListFragment"
+        android:label="Lista de vehiculos"
+        tools:layout="@layout/fragment_vehicles_list" />
+</navigation>

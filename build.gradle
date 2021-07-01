@@ -11,6 +11,8 @@ buildscript {
         classpath 'androidx.benchmark:benchmark-gradle-plugin:1.0.0'
         classpath 'com.vanniktech:gradle-android-junit-jacoco-plugin:0.16.0'
         classpath 'com.google.dagger:hilt-android-gradle-plugin:2.37'
+        def nav_version = "2.3.5"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -21,15 +23,7 @@ allprojects {
         google()
         mavenCentral()
 
-        configurations.all{
-            resolutionStrategy{
-                eachDependency{ details ->
-                    if(details.requested.group == 'org.jacoco'){
-                        details.useVersion jacocoVersion
-                    }
-                }
-            }
-        }
+
     }
 }
 

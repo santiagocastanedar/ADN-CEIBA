@@ -2,6 +2,13 @@ package co.com.ceiba.domain.entity;
 
 
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
+
+import co.com.ceiba.domain.exception.WrongDateException;
 import co.com.ceiba.domain.exception.WrongPlateException;
 
 import static co.com.ceiba.domain.utils.Constant.PLATE_CHARACTERS_REQUIERE;
@@ -13,8 +20,7 @@ public class Vehicle {
     private String departureDate;
 
     public Vehicle(String plate, String entryDate) {
-        validatePlate(plate);
-        this.entryDate = entryDate;
+        validatePlate(plate,entryDate);
     }
 
     public String getPlate() {
@@ -41,10 +47,17 @@ public class Vehicle {
         this.departureDate = departureDate;
     }
 
-    private void validatePlate(String plate){
+    private void validatePlate(String plate,String entryDate){
+        String dayOfWeef = "";
+        TimeZone timeZone = TimeZone.getDefault();
+        Calendar calendar = new GregorianCalendar(timeZone);
+
         if(plate.length() != PLATE_CHARACTERS_REQUIERE){
             throw new WrongPlateException();
+        }else if(entryDate.equals("")){
+            throw new WrongDateException();
         }
+
         this.plate = plate;
     }
 

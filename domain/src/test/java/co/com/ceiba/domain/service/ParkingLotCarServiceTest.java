@@ -15,18 +15,18 @@ import java.util.Date;
 
 import co.com.ceiba.domain.entity.Car;
 import co.com.ceiba.domain.exception.VehicleAlreadyExistsException;
-import co.com.ceiba.domain.repository.ParkingLotRepository;
+import co.com.ceiba.domain.repository.ParkingLotCarRepository;
 
-public class ParkingLotServiceTest {
+public class ParkingLotCarServiceTest {
 
     @Rule
     public MockitoRule mockitoRule = MockitoJUnit.rule();
 
     @Mock
-    private ParkingLotRepository parkingLotRepository;
+    private ParkingLotCarRepository parkingLotCarRepository;
 
     @InjectMocks
-    ParkingLotService parkingLotService;
+    ParkingLotCarService parkingLotCarService;
 
     @Before
     public void init(){
@@ -43,7 +43,7 @@ public class ParkingLotServiceTest {
 
         try {
             //Act
-            parkingLotService.saveVehicle(car);
+            parkingLotCarService.saveVehicle(car);
             Assert.fail();
         }catch (VehicleAlreadyExistsException ex){
             //Assert

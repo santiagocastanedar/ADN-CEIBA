@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import co.com.ceiba.domain.exception.WrongDateException;
 import co.com.ceiba.domain.exception.WrongPlateException;
 
 public class VehicleTest {
@@ -50,6 +51,21 @@ public class VehicleTest {
         String entryDate = vehicle.getEntryDate();
         //Assert
         Assert.assertEquals(dateExpected,entryDate);
+    }
+
+    @Test
+    public void EntryDateInCorrect(){
+        //Arrange
+        String plate = "FGU249";
+        String expectedMessage = "La fecha de entrada o de salida son incorrectas.";
+        //Act
+        try {
+            Vehicle vehicle =  new Vehicle(plate,"");
+            Assert.fail();
+        }catch (WrongDateException ex){
+            //Assert
+            Assert.assertEquals(expectedMessage,ex.getMessage());
+        }
     }
 
 }

@@ -10,8 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ADNCEIBA">
-        <activity android:name=".ui.ParkingLotActivity"></activity>
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.MainMenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
