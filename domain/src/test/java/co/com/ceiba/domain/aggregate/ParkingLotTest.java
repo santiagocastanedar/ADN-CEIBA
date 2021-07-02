@@ -14,7 +14,6 @@ public class ParkingLotTest {
         //Arrange
         int id = 1;
         String name = "Parqueadero Santiago's";
-
         //Act
         ParkingInformationRate parkingInformationRate = new ParkingInformationRate(1000,8000,500,4000,9,24);
         ParkingLot parkingLotExpected =  new ParkingLot(id,name,parkingInformationRate,null,0,0);
