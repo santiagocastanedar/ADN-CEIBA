@@ -18,7 +18,11 @@ public class MotorcycleMapper {
     }
 
     public Motorcycle motorcycleRoomToMotorcycleMapper(MotorcycleRoom motorcycleRoom){
-        return new Motorcycle(motorcycleRoom.plate,motorcycleRoom.entryDate,motorcycleRoom.cylinder);
+        if(motorcycleRoom != null){
+            return new Motorcycle(motorcycleRoom.plate,motorcycleRoom.entryDate,motorcycleRoom.cylinder);
+        }else{
+            return null;
+        }
     }
 
     public List<Motorcycle> listMotorcycleRoomToListMotorcycle(List<MotorcycleRoom> motorcycleRoomList){

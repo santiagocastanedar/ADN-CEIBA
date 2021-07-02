@@ -15,7 +15,7 @@ public interface MotorcycleDao {
     MotorcycleRoom getMotorcycle(String plate);
 
 
-    @Query("SELECT * FROM motorcycles WHERE plate")
+    @Query("SELECT * FROM motorcycles WHERE departureDate IS NULL")
     List<MotorcycleRoom> getMotorcycles();
 
     @Query("SELECT COUNT(*) FROM motorcycles ")

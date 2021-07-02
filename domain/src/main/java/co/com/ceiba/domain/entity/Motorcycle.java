@@ -9,7 +9,7 @@ public class Motorcycle extends Vehicle{
     private int cylinder;
 
     public Motorcycle(String plate, String entryDate, int cylinder) {
-        super(plate, entryDate);
+        super(plate, entryDate,"motorcycle");
         setCylinder(cylinder);
     }
 

@@ -1,5 +1,7 @@
 package co.com.ceiba.application.services;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import co.com.ceiba.domain.entity.Car;
@@ -20,5 +22,8 @@ public class CarAplicationServices {
         parkingLotCarService.saveVehicle(car);
     }
 
+    public List<Car> getCars(){
+        return parkingLotCarService.getCars();
+    }
 
 }

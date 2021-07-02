@@ -18,6 +18,7 @@ import co.com.ceiba.adnceiba.R;
 import co.com.ceiba.adnceiba.databinding.FragmentMainMenuBinding;
 import dagger.hilt.android.AndroidEntryPoint;
 
+@AndroidEntryPoint
 public class MainMenuFragment extends Fragment {
 
 

@@ -33,15 +33,7 @@
                 android:maxLength="6"
                 android:inputType="textCapCharacters"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvEntryDate"
-                android:text="Fecha de entrada"
-                android:textSize="20dp"
-                android:fontFamily="sans-serif"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"/>
+
 
             <RadioGroup
                 android:layout_width="wrap_content"
@@ -62,6 +54,26 @@
                     android:id="@+id/radioMotorcycle"
                     android:text="Moto"/>
             </RadioGroup>
+            <EditText
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:id="@+id/txtcylinder"
+                android:textAlignment="center"
+                android:hint="Cilindraje"
+                android:maxLength="6"
+                android:inputType="number"
+                android:visibility="gone"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvEntryDate"
+                android:text="Fecha de entrada"
+                android:textSize="20dp"
+                android:fontFamily="sans-serif"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"/>
             <CalendarView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

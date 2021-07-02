@@ -18,7 +18,7 @@ public class VehicleTest {
         //Arrange
         String plate = "FGU249";
         //Act
-        Vehicle vehicle =  new Vehicle(plate,date);
+        Vehicle vehicle =  new Vehicle(plate,date,"carro");
         //Assert
         Assert.assertNotNull(vehicle);
     }
@@ -31,7 +31,7 @@ public class VehicleTest {
 
         //Act
         try {
-            Vehicle vehicle =  new Vehicle(plate,date);
+            Vehicle vehicle =  new Vehicle(plate,date,"moto");
             Assert.fail();
         }catch (WrongPlateException ex){
             //Assert
@@ -47,7 +47,7 @@ public class VehicleTest {
         String dateExpected = dateFormat.format(new Date());
 
         //Act
-        Vehicle vehicle =  new Vehicle(plate,date);
+        Vehicle vehicle =  new Vehicle(plate,date,"moto");
         String entryDate = vehicle.getEntryDate();
         //Assert
         Assert.assertEquals(dateExpected,entryDate);
@@ -60,7 +60,7 @@ public class VehicleTest {
         String expectedMessage = "La fecha de entrada o de salida son incorrectas.";
         //Act
         try {
-            Vehicle vehicle =  new Vehicle(plate,"");
+            Vehicle vehicle =  new Vehicle(plate,"","carro");
             Assert.fail();
         }catch (WrongDateException ex){
             //Assert

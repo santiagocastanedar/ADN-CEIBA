@@ -15,7 +15,11 @@ public class CarMapper {
     }
 
     public Car carRoomToCarMapper(CarRoom carRoom){
-        return new Car(carRoom.plate,carRoom.entryDate);
+        if(carRoom != null){
+            return new Car(carRoom.plate,carRoom.entryDate);
+        }else {
+            return null;
+        }
     }
     
     public List<Car> listCarRoomToListCar(List<CarRoom> carRoomList){

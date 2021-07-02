@@ -24,4 +24,6 @@ public class PaymentVehicleCar implements VehiclePaymentRepository {
         }
         return total;
     }
+
+
 }

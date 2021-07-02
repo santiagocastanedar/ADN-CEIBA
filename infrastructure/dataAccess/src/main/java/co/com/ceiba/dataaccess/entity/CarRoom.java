@@ -7,8 +7,12 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "cars")
 public class CarRoom {
-    @PrimaryKey
+
+    @PrimaryKey(autoGenerate = true)
+    public int id;
+
     @NonNull
+    @ColumnInfo(name="plate")
     public String plate;
 
     @ColumnInfo(name="entryDate")
@@ -16,8 +20,10 @@ public class CarRoom {
     @ColumnInfo(name="departureDate")
     public String departureDate;
 
+
     public CarRoom(@NonNull String plate, String entryDate) {
         this.plate = plate;
         this.entryDate = entryDate;
+
     }
 }

@@ -1,5 +1,9 @@
 package co.com.ceiba.domain.service;
 
+import android.util.Log;
+
+import java.util.List;
+
 import javax.inject.Inject;
 
 import co.com.ceiba.domain.entity.Car;
@@ -19,6 +23,10 @@ public class ParkingLotCarService {
             throw new VehicleAlreadyExistsException();
         }
         parkingLotCarRepository.saveVehicle(car);
+    }
+
+    public List<Car> getCars(){
+        return parkingLotCarRepository.getCars();
     }
 
 }

@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.jetbrains.annotations.NotNull;
@@ -27,6 +28,7 @@ import co.com.ceiba.adnceiba.viewmodel.ParkingLotCarViewModel;
 import co.com.ceiba.adnceiba.viewmodel.ParkingLotMotorcycleViewModel;
 import co.com.ceiba.domain.aggregate.ParkingLot;
 import co.com.ceiba.domain.entity.Car;
+import co.com.ceiba.domain.entity.Motorcycle;
 import co.com.ceiba.domain.valueobject.ParkingInformationRate;
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -35,10 +37,11 @@ public class ParkingVehicleFragment extends Fragment {
 
 
     ParkingLotCarViewModel parkingLotCarViewModel;
+    ParkingLotMotorcycleViewModel parkingLotMotorcycleViewModel;
 
     private FragmentParkingVehicleBinding binding;
     private String entryDate;
-    private ParkingLotMotorcycleViewModel parkingLotMotorcycleViewModel;
+
     private ParkingLot parkingLot;
 
 
@@ -62,9 +65,8 @@ public class ParkingVehicleFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        parkingLotMotorcycleViewModel =  new ViewModelProvider(requireActivity()).get(ParkingLotMotorcycleViewModel.class);
         parkingLotCarViewModel = new ViewModelProvider(requireActivity()).get(ParkingLotCarViewModel.class);
-        //parkingLotMotorcycleViewModel =  new ViewModelProvider(requireActivity()).get(ParkingLotMotorcycleViewModel.class);
         parkingLot =  new ParkingLot(1,"Santiagos ParkingLot",
                 new ParkingInformationRate(1000,
                         8000,
@@ -77,20 +79,35 @@ public class ParkingVehicleFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                String dateS = entryDate;
+                String plate = binding.txtPlate.getText().toString();
+
                 if(binding.radioCar.isChecked()){
                     try{
-                        Car car = new Car(binding.txtPlate.getText().toString(),entryDate);
+                        Car car = new Car(plate,entryDate);
+                        parkingLotCarViewModel.executeSaveCar(car);
+                        Toast.makeText(getContext(), "Vehiculo ingresado con exito ", Toast.LENGTH_LONG).show();
+                        binding.txtPlate.setText("");
+                        binding.txtcylinder.setText("");
                     }catch (Exception e){
                         Toast.makeText(getContext(), "Error: "+ e.getMessage() , Toast.LENGTH_LONG).show();
+
                     }
 
-                    //parkingLotCarViewModel.executeSaveCar(car);
                 }else if(binding.radioMotorcycle.isChecked()){
+                    try {
+                        int cylinder = Integer.parseInt(binding.txtcylinder.getText().toString());
+                        Motorcycle motorcycle = new Motorcycle(plate,entryDate,cylinder);
+                        parkingLotMotorcycleViewModel.executeSaveMotorcycle(motorcycle);
+                        binding.txtPlate.setText("");
+                        binding.txtcylinder.setText("");
+                        Toast.makeText(getContext(), "Vehiculo ingresado con exito ", Toast.LENGTH_LONG).show();
+                    }catch (Exception e){
+                        Toast.makeText(getContext(), "Error: "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
                 }else{
                     Toast.makeText(getContext(), "Debe seleccionar el tipo de vehiculo.", Toast.LENGTH_LONG).show();
                 }
-                Toast.makeText(getContext(), " Se creo correctamente: "+dateS, Toast.LENGTH_SHORT).show();
+
 
             }
         });
@@ -102,6 +119,17 @@ public class ParkingVehicleFragment extends Fragment {
                 String time = new SimpleDateFormat("HH:mm").format(new Date());
                 entryDate = year+"-"+month+"-"+dayOfMonth+" "+time;
 
+            }
+        });
+
+        binding.rgTypeVehicle.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(binding.radioMotorcycle.isChecked()){
+                    binding.txtcylinder.setVisibility(View.VISIBLE);
+                }else{
+                    binding.txtcylinder.setVisibility(View.GONE);
+                }
             }
         });
 

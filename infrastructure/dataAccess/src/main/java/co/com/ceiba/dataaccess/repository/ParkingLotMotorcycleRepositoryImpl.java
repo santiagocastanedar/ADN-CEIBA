@@ -18,17 +18,24 @@ public class ParkingLotMotorcycleRepositoryImpl implements ParkingLotMotorcycleR
         this.appDatabaseParkingLot = appDatabaseParkingLot;
     }
 
+
     @Override
     public Motorcycle motorcycleExist(String plate) {
-        return null;
+        return new MotorcycleMapper().motorcycleRoomToMotorcycleMapper(appDatabaseParkingLot.motorcycleDao().getMotorcycle(plate));
     }
 
     @Override
     public void saveMotorcycle(Motorcycle motorcycle) {
+        appDatabaseParkingLot.motorcycleDao().insertVehicle(new MotorcycleMapper().motorcycleTomotorcycleRoomMapper(motorcycle));
 
     }
 
     @Override
+    public List<Motorcycle> getMotorcycle() {
+        return new MotorcycleMapper().listMotorcycleRoomToListMotorcycle(appDatabaseParkingLot.motorcycleDao().getMotorcycles());
+    }
+
+    /*@Override
     public int getQuantity() {
         return appDatabaseParkingLot.motorcycleDao().getMotorcycleQuantity();
     }
@@ -36,5 +43,5 @@ public class ParkingLotMotorcycleRepositoryImpl implements ParkingLotMotorcycleR
     @Override
     public List<Motorcycle> getMotorcycle() {
         return new MotorcycleMapper().listMotorcycleRoomToListMotorcycle(appDatabaseParkingLot.motorcycleDao().getMotorcycles());
-    }
+    }*/
 }

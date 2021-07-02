@@ -65,12 +65,16 @@ task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
 }
 dependencies {
     implementation 'org.jetbrains:annotations:15.0'
-    testImplementation 'junit:junit:4.+'
+    testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.mockito:mockito-core:3.3.3'
 
-    implementation 'com.google.dagger:hilt-android:2.37'
-    annotationProcessor 'com.google.dagger:hilt-compiler:2.37'
+    //implementation "com.google.dagger:hilt-android:2.37"
+    implementation "com.google.dagger:hilt-android:2.33-beta"
+    //annotationProcessor "com.google.dagger:hilt-android-compiler:2.37"
+    annotationProcessor "com.google.dagger:hilt-android-compiler:2.33-beta"
     // For local unit tests
     testImplementation 'com.google.dagger:hilt-android-testing:2.37'
     testAnnotationProcessor 'com.google.dagger:hilt-compiler:2.37'
+
+    
 }

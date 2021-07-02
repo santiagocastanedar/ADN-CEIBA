@@ -7,7 +7,9 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "motorcycles")
 public class MotorcycleRoom {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    public int id;
+
     @NonNull
     public String plate;
 
@@ -18,9 +20,11 @@ public class MotorcycleRoom {
     @ColumnInfo(name="departureDate")
     public String departureDate;
 
+
     public MotorcycleRoom(@NonNull String plate, int cylinder, String entryDate) {
         this.plate = plate;
         this.cylinder = cylinder;
         this.entryDate = entryDate;
+
     }
 }
