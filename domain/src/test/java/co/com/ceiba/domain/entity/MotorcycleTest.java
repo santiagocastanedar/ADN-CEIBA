@@ -18,7 +18,7 @@ public class MotorcycleTest {
     @Test
     public void setIncorrectCylinder() {
         //Arrange
-        
+
         String plate = "FGU249";
         String expectedMessage = "El cilindraje del vehiculo es incorrecto.";
 

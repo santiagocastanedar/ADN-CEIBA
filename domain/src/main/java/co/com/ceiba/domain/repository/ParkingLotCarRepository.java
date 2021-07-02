@@ -10,7 +10,7 @@ public interface ParkingLotCarRepository {
     void saveVehicle(Car car);
     Car getCar(String plate);
 
-    //int getQuantity();
+    int getQuantity();
     List<Car> getCars();
 
 

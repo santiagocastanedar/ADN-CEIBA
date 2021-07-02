@@ -33,6 +33,11 @@ public class ParkingLotCarRepositoryImpl implements ParkingLotCarRepository {
     }
 
     @Override
+    public int getQuantity() {
+        return databaseParkingLot.carDao().getCarQuantity();
+    }
+
+    @Override
     public List<Car> getCars() {
         return new CarMapper().listCarRoomToListCar(databaseParkingLot.carDao().getCars());
     }

@@ -9,6 +9,6 @@ public interface ParkingLotMotorcycleRepository {
 
     Motorcycle motorcycleExist(String plate);
     void saveMotorcycle(Motorcycle motorcycle);
-    //int getQuantity();
+    int getQuantity();
     List<Motorcycle> getMotorcycle();
 }
