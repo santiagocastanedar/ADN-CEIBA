@@ -27,4 +27,8 @@ public class ParkingLotMotorcycleService {
     public List<Motorcycle> getMotorcycles(){
         return motorcycleRepository.getMotorcycle();
     }
+
+    public int getQuiantity(){
+        return motorcycleRepository.getQuantity();
+    }
 }

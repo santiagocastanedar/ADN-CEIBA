@@ -28,4 +28,8 @@ public class ParkingLotCarService {
         return parkingLotCarRepository.getCars();
     }
 
+    public int getQuantity(){
+        return parkingLotCarRepository.getQuantity();
+    }
+
 }
