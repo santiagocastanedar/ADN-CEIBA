@@ -1,6 +1,5 @@
 package co.com.ceiba.domain.service;
 
-import android.util.Log;
 
 import java.util.List;
 

@@ -24,6 +24,8 @@ import co.com.ceiba.domain.entity.Vehicle;
 import co.com.ceiba.domain.service.PaymentVehicleCar;
 import co.com.ceiba.domain.service.PaymentVehicleMotorcycle;
 
+import static co.com.ceiba.domain.utils.Constant.CAR;
+
 
 public class VehiclesAdapter extends RecyclerView.Adapter<VehiclesAdapter.ViewHolder> implements View.OnClickListener{
 
@@ -82,7 +84,7 @@ public class VehiclesAdapter extends RecyclerView.Adapter<VehiclesAdapter.ViewHo
         Vehicle vehicleSelected =  new Vehicle(vehicleArrayList.get(positionSelected).getPlate(),
                 vehicleArrayList.get(positionSelected).getEntryDate(),vehicleArrayList.get(positionSelected).getDepartureDate());
 
-        if(vehicleArrayList.get(positionSelected).getType() == "car"){
+        if(vehicleArrayList.get(positionSelected).getType() == CAR){
             PaymentVehicleCar paymentVehicleCar = new PaymentVehicleCar(parkingLot);
             time = parkingLot.calculateTimeInParkingLot(vehicleSelected.getEntryDate(),date);
             total = paymentVehicleCar.calculatePaymentVehicle(time,parkingLot.getParkingInformationRate().getHourStartDay(),

@@ -9,5 +9,8 @@ public class Constant {
     public static final int SUNDAY_PERMIT = 0;
     public static final int MONDAY_PERMIT = 1;
     public static final String PLATE_REST = "A";
+    public static final String CAR = "car";
+    public static final String MOTORCYCLE = "motorcycle";
+
 
 }

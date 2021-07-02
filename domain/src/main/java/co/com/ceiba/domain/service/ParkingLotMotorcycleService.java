@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import co.com.ceiba.domain.entity.Car;
 import co.com.ceiba.domain.entity.Motorcycle;
 import co.com.ceiba.domain.exception.VehicleAlreadyExistsException;
 import co.com.ceiba.domain.repository.ParkingLotMotorcycleRepository;

@@ -2,15 +2,10 @@ package co.com.ceiba.domain.entity;
 
 
 
-import android.text.format.DateFormat;
 
-import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.TimeZone;
 
 import co.com.ceiba.domain.exception.RestPlateException;
 import co.com.ceiba.domain.exception.WrongDateException;

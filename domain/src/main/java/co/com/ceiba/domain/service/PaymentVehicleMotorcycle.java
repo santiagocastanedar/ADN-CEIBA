@@ -2,7 +2,6 @@ package co.com.ceiba.domain.service;
 
 import co.com.ceiba.domain.aggregate.ParkingLot;
 import co.com.ceiba.domain.entity.Motorcycle;
-import co.com.ceiba.domain.entity.Vehicle;
 import co.com.ceiba.domain.repository.VehiclePaymentRepository;
 
 import static co.com.ceiba.domain.utils.Constant.ADDITIONAL_PRICE_MOTORCYCLE;
