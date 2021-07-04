@@ -32,8 +32,6 @@ public class ParkingLotCarViewModel extends ViewModel {
         this.carAplicationServices = carAplicationServices;
     }
 
-
-
     public List<Car> getCars(){
 
         AsyncTask.execute(new Runnable() {
@@ -49,9 +47,6 @@ public class ParkingLotCarViewModel extends ViewModel {
         }
         return carList;
     }
-
-
-
 
     public LiveData<Boolean> executeSaveCar(Car car){
         if(carSaved == null){
