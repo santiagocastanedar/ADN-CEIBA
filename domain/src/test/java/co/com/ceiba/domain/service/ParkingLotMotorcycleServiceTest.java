@@ -9,7 +9,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
-
 import co.com.ceiba.domain.entity.Motorcycle;
 import co.com.ceiba.domain.exception.RestPlateException;
 import co.com.ceiba.domain.repository.ParkingLotMotorcycleRepository;
