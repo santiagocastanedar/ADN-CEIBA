@@ -48,7 +48,15 @@
                 android:text="Ver vehiculos"
                 android:layout_gravity="center_horizontal"
                 />
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50dp"
+                android:id="@+id/progress_action"
+                android:visibility="invisible"/>
         </LinearLayout>
+
     </ScrollView>
 
 </LinearLayout>

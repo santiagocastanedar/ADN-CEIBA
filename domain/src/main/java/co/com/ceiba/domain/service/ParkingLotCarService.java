@@ -1,13 +1,24 @@
 package co.com.ceiba.domain.service;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import co.com.ceiba.domain.entity.Car;
+import co.com.ceiba.domain.exception.MaxCapacityException;
+import co.com.ceiba.domain.exception.RestPlateException;
 import co.com.ceiba.domain.exception.VehicleAlreadyExistsException;
 import co.com.ceiba.domain.repository.ParkingLotCarRepository;
+
+import static co.com.ceiba.domain.utils.Constant.DATE_FORMAT_PAYMENT;
+import static co.com.ceiba.domain.utils.Constant.MAX_QUANTITY_CAR;
+import static co.com.ceiba.domain.utils.Constant.MONDAY_PERMIT;
+import static co.com.ceiba.domain.utils.Constant.PLATE_REST;
+import static co.com.ceiba.domain.utils.Constant.SUNDAY_PERMIT;
 
 public class ParkingLotCarService {
 
@@ -21,6 +32,10 @@ public class ParkingLotCarService {
         if(parkingLotCarRepository.getCar(car.getPlate()) != null){
             throw new VehicleAlreadyExistsException();
         }
+        if(getQuantity() >= MAX_QUANTITY_CAR){
+            throw new MaxCapacityException();
+        }
+        validateEntryPlate(car.getPlate(),car.getEntryDate());
         parkingLotCarRepository.saveVehicle(car);
     }
 
@@ -30,6 +45,20 @@ public class ParkingLotCarService {
 
     public int getQuantity(){
         return parkingLotCarRepository.getQuantity();
+    }
+
+    private void validateEntryPlate(String plate, String entryDate){
+        Date date;
+        SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT_PAYMENT);
+
+        try {
+            date = (Date)formatter.parse(entryDate);
+            if(date.getDay() != SUNDAY_PERMIT && date.getDay() != MONDAY_PERMIT && plate.startsWith(PLATE_REST)){
+                throw new RestPlateException();
+            }
+        } catch (ParseException e) {
+
+        }
     }
 
 }

@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import co.com.ceiba.domain.entity.Car;
+import co.com.ceiba.domain.exception.RestPlateException;
 import co.com.ceiba.domain.exception.VehicleAlreadyExistsException;
 import co.com.ceiba.domain.repository.ParkingLotCarRepository;
 
@@ -33,23 +34,23 @@ public class ParkingLotCarServiceTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    /*@Test
-    public void vehicleAlreadyExistInParkingLot() {
+    @Test
+    public void vehiclePlateRestriction() {
         //Arrange
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        String date = dateFormat.format(new Date());
-        String expectedMessage = "El vehiculo ya se encuentra parqueado";
-        Car car = new Car("FGU249",date);
+        String entryDate = ("2021-07-06 7:00");
+        String expectedMessage = "La placa ingresada no tiene permitido ingresar este dia";
+        Car car = new Car("AGU249",entryDate);
 
         try {
             //Act
             parkingLotCarService.saveVehicle(car);
             Assert.fail();
-        }catch (VehicleAlreadyExistsException ex){
+        }catch (RestPlateException ex){
             //Assert
             Assert.assertEquals(expectedMessage,ex.getMessage());
         }
-    }*/
+    }
 
 
 

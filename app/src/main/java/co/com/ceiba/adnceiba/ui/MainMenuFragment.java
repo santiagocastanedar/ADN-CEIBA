@@ -45,6 +45,7 @@ public class MainMenuFragment extends Fragment {
         binding.btnViewVehicle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                binding.progressAction.setVisibility(View.VISIBLE);
                 Navigation.findNavController(view).navigate(R.id.action_mainMenuFragment_to_vehiclesListFragment);
             }
         });

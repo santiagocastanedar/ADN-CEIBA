@@ -1,5 +1,7 @@
 package co.com.ceiba.application.services;
 
+import android.util.Log;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -19,7 +21,11 @@ public class MotorcycleApplicationService {
     }
 
     public void saveMotorcycle(Motorcycle motorcycle){
-        parkingLotMotorcycleService.saveMotorcycle(motorcycle);
+        try {
+            parkingLotMotorcycleService.saveMotorcycle(motorcycle);
+        }catch (Exception e){
+            Log.e("mensaje",e.getMessage());
+        }
     }
 
     public List<Motorcycle> getMotorcycle(){

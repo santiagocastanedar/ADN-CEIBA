@@ -11,6 +11,7 @@ import co.com.ceiba.domain.exception.RestPlateException;
 import co.com.ceiba.domain.exception.WrongDateException;
 import co.com.ceiba.domain.exception.WrongPlateException;
 
+import static co.com.ceiba.domain.utils.Constant.DATE_FORMAT_PAYMENT;
 import static co.com.ceiba.domain.utils.Constant.MONDAY_PERMIT;
 import static co.com.ceiba.domain.utils.Constant.PLATE_CHARACTERS_REQUIERE;
 import static co.com.ceiba.domain.utils.Constant.PLATE_REST;
@@ -24,10 +25,8 @@ public class Vehicle {
     private String type;
 
     public Vehicle(String plate, String entryDate,String type) {
-        validatePlate(plate);
-        validateEntryPlate(plate,entryDate);
-        this.plate = plate;
-        this.entryDate = entryDate;
+        setEntryDate(entryDate);
+        setPlate(plate);
         this.type = type;
     }
 
@@ -36,10 +35,14 @@ public class Vehicle {
     }
 
     public void setPlate(String plate) {
+        if(plate.length() != PLATE_CHARACTERS_REQUIERE){
+            throw new WrongPlateException();
+        }
         this.plate = plate;
     }
 
     public void setEntryDate(String entryDate) {
+         validateDate(entryDate);
         this.entryDate = entryDate;
     }
 
@@ -52,12 +55,13 @@ public class Vehicle {
     }
 
     public void setDepartureDate(String departureDate) {
+        validateDate(departureDate);
         this.departureDate = departureDate;
     }
 
-    private void validatePlate(String plate){
-        if(plate.length() != PLATE_CHARACTERS_REQUIERE){
-            throw new WrongPlateException();
+    public void validateDate(String date){
+        if(date.equals("")){
+            throw new WrongDateException();
         }
     }
 
@@ -68,24 +72,4 @@ public class Vehicle {
     public void setType(String type) {
         this.type = type;
     }
-
-    private void validateEntryPlate(String plate, String entryDate){
-        Date date;
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        if(entryDate.equals("")){
-            throw new WrongDateException();
-        }
-        try {
-            date = (Date)formatter.parse(entryDate);
-            if(date.getDay() != SUNDAY_PERMIT && date.getDay() != MONDAY_PERMIT && plate.startsWith(PLATE_REST)){
-                throw new RestPlateException();
-            }
-        } catch (ParseException e) {
-
-        }
-
-    }
-
-
-
 }

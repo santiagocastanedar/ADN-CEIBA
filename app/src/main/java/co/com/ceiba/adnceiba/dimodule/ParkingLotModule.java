@@ -4,6 +4,7 @@ import javax.inject.Singleton;
 
 import co.com.ceiba.dataaccess.repository.ParkingLotCarRepositoryImpl;
 import co.com.ceiba.dataaccess.repository.ParkingLotMotorcycleRepositoryImpl;
+import co.com.ceiba.domain.other.PaymentVehicle;
 import co.com.ceiba.domain.repository.ParkingLotCarRepository;
 import co.com.ceiba.domain.repository.ParkingLotMotorcycleRepository;
 import dagger.Binds;
@@ -25,6 +26,4 @@ public abstract class ParkingLotModule {
     public abstract ParkingLotMotorcycleRepository bindParkingLotMotorcycleRepository(ParkingLotMotorcycleRepositoryImpl parkingLotMotorcycleRepository);
     @Binds
     public abstract ParkingLotCarRepository bindParkingLotCarRepository(ParkingLotCarRepositoryImpl parkingLotRepository);
-
-
 }

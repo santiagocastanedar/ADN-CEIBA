@@ -1,7 +1,6 @@
 package co.com.ceiba.adnceiba.adapters;
 
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,24 +16,24 @@ import org.jetbrains.annotations.NotNull;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import co.com.ceiba.adnceiba.R;
-import co.com.ceiba.domain.aggregate.ParkingLot;
+import co.com.ceiba.adnceiba.ui.VehicleView;
 import co.com.ceiba.domain.entity.Vehicle;
-import co.com.ceiba.domain.service.PaymentVehicleCar;
-import co.com.ceiba.domain.service.PaymentVehicleMotorcycle;
 
 import static co.com.ceiba.domain.utils.Constant.CAR;
 
 
-public class VehiclesAdapter extends RecyclerView.Adapter<VehiclesAdapter.ViewHolder> implements View.OnClickListener{
+public class VehiclesAdapter extends RecyclerView.Adapter<VehiclesAdapter.ViewHolder>{
 
-    ArrayList<Vehicle> vehicleArrayList;
+    List<Vehicle> vehicleArrayList;
     private View.OnClickListener listener;
-    int positionSelected = 0;
+    private VehicleView vehicleView;
 
-    public VehiclesAdapter(ArrayList<Vehicle> vehicleArrayList) {
+    public VehiclesAdapter(ArrayList<Vehicle> vehicleArrayList,VehicleView vehicleView) {
         this.vehicleArrayList = vehicleArrayList;
+        this.vehicleView = vehicleView;
     }
 
     @NonNull
@@ -43,7 +42,6 @@ public class VehiclesAdapter extends RecyclerView.Adapter<VehiclesAdapter.ViewHo
     public ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_list,null,false);
-        view.setOnClickListener(this);
         return new ViewHolder(view);
     }
 
@@ -54,45 +52,14 @@ public class VehiclesAdapter extends RecyclerView.Adapter<VehiclesAdapter.ViewHo
         holder.btnPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                positionSelected = position;
+                vehicleView.onClickPost(vehicleArrayList.get(position));
             }
         });
-
     }
 
     @Override
     public int getItemCount() {
         return vehicleArrayList.size();
-    }
-
-    public void setOnclickListener(View.OnClickListener listener){
-        this.listener=listener;
-    }
-    @Override
-    public void onClick(View v) {
-        if(listener != null){
-            listener.onClick(v);
-        }
-
-    }
-
-    public double getPayment(ParkingLot parkingLot){
-        double total = 0;
-        long time = 0;
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        String date = dateFormat.format(new Date());
-        Vehicle vehicleSelected =  new Vehicle(vehicleArrayList.get(positionSelected).getPlate(),
-                vehicleArrayList.get(positionSelected).getEntryDate(),vehicleArrayList.get(positionSelected).getDepartureDate());
-
-        if(vehicleArrayList.get(positionSelected).getType() == CAR){
-            PaymentVehicleCar paymentVehicleCar = new PaymentVehicleCar(parkingLot);
-            time = parkingLot.calculateTimeInParkingLot(vehicleSelected.getEntryDate(),date);
-            total = paymentVehicleCar.calculatePaymentVehicle(time,parkingLot.getParkingInformationRate().getHourStartDay(),
-                    parkingLot.getParkingInformationRate().getHourStartDay());
-        }else{
-            //TODO
-        }
-        return total;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -113,5 +80,10 @@ public class VehiclesAdapter extends RecyclerView.Adapter<VehiclesAdapter.ViewHo
             tvEntryDate.setText(vehicle.getEntryDate());
             tvType.setText(vehicle.getType());
         }
+    }
+
+    public void updateList(List<Vehicle> usersFilter){
+        this.vehicleArrayList = usersFilter;
+        notifyDataSetChanged();
     }
 }

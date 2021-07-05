@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -20,29 +19,20 @@ import org.jetbrains.annotations.NotNull;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.inject.Inject;
-
-import co.com.ceiba.adnceiba.R;
 import co.com.ceiba.adnceiba.databinding.FragmentParkingVehicleBinding;
 import co.com.ceiba.adnceiba.viewmodel.ParkingLotCarViewModel;
 import co.com.ceiba.adnceiba.viewmodel.ParkingLotMotorcycleViewModel;
-import co.com.ceiba.domain.aggregate.ParkingLot;
 import co.com.ceiba.domain.entity.Car;
 import co.com.ceiba.domain.entity.Motorcycle;
-import co.com.ceiba.domain.valueobject.ParkingInformationRate;
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
 public class ParkingVehicleFragment extends Fragment {
 
-
     ParkingLotCarViewModel parkingLotCarViewModel;
     ParkingLotMotorcycleViewModel parkingLotMotorcycleViewModel;
-
     private FragmentParkingVehicleBinding binding;
     private String entryDate;
-
-    private ParkingLot parkingLot;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,16 +46,7 @@ public class ParkingVehicleFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        parkingLotMotorcycleViewModel =  new ViewModelProvider(requireActivity()).get(ParkingLotMotorcycleViewModel.class);
-        parkingLotCarViewModel = new ViewModelProvider(requireActivity()).get(ParkingLotCarViewModel.class);
-        parkingLot =  new ParkingLot(1,"Santiagos ParkingLot",
-                new ParkingInformationRate(1000,
-                        8000,
-                        500,
-                        4000,
-                        9,
-                        24),
-                null,20,10);
+        init();
         binding.btnCreateVehicle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,33 +54,21 @@ public class ParkingVehicleFragment extends Fragment {
                 String plate = binding.txtPlate.getText().toString();
 
                 if(binding.radioCar.isChecked()){
-                    try{
-                        Car car = new Car(plate,entryDate);
-                        parkingLotCarViewModel.executeSaveCar(car);
-                        Toast.makeText(getContext(), "Vehiculo ingresado con exito ", Toast.LENGTH_LONG).show();
-                        binding.txtPlate.setText("");
-                        binding.txtcylinder.setText("");
-                    }catch (Exception e){
-                        Toast.makeText(getContext(), "Error: "+ e.getMessage() , Toast.LENGTH_LONG).show();
-
-                    }
-
+                    Car car = new Car(plate,entryDate);
+                    parkingLotCarViewModel.executeSaveCar(car);
+                    binding.txtPlate.setText("");
+                    binding.txtcylinder.setText("");
+                    Toast.makeText(getContext(), "Vehiculo ingresado con exito ", Toast.LENGTH_LONG).show();
                 }else if(binding.radioMotorcycle.isChecked()){
-                    try {
-                        int cylinder = Integer.parseInt(binding.txtcylinder.getText().toString());
-                        Motorcycle motorcycle = new Motorcycle(plate,entryDate,cylinder);
-                        parkingLotMotorcycleViewModel.executeSaveMotorcycle(motorcycle);
-                        binding.txtPlate.setText("");
-                        binding.txtcylinder.setText("");
-                        Toast.makeText(getContext(), "Vehiculo ingresado con exito ", Toast.LENGTH_LONG).show();
-                    }catch (Exception e){
-                        Toast.makeText(getContext(), "Error: "+e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
+                    int cylinder = Integer.parseInt(binding.txtcylinder.getText().toString());
+                    Motorcycle motorcycle = new Motorcycle(plate,entryDate,cylinder);
+                    parkingLotMotorcycleViewModel.executeSaveMotorcycle(motorcycle);
+                    binding.txtPlate.setText("");
+                    binding.txtcylinder.setText("");
+                    Toast.makeText(getContext(), "Vehiculo ingresado con exito ", Toast.LENGTH_LONG).show();
                 }else{
                     Toast.makeText(getContext(), "Debe seleccionar el tipo de vehiculo.", Toast.LENGTH_LONG).show();
                 }
-
-
             }
         });
 
@@ -123,11 +92,11 @@ public class ParkingVehicleFragment extends Fragment {
                 }
             }
         });
-
-
     }
 
-
-
-
+    public void init(){
+        parkingLotMotorcycleViewModel =  new ViewModelProvider(requireActivity()).get(ParkingLotMotorcycleViewModel.class);
+        parkingLotCarViewModel = new ViewModelProvider(requireActivity()).get(ParkingLotCarViewModel.class);
+        binding.calendarEntryDate.setMaxDate(System.currentTimeMillis());
+    }
 }

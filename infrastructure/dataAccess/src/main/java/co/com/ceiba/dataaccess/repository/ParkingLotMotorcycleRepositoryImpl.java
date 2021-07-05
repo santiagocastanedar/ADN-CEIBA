@@ -39,14 +39,4 @@ public class ParkingLotMotorcycleRepositoryImpl implements ParkingLotMotorcycleR
     public List<Motorcycle> getMotorcycle() {
         return new MotorcycleMapper().listMotorcycleRoomToListMotorcycle(appDatabaseParkingLot.motorcycleDao().getMotorcycles());
     }
-
-    /*@Override
-    public int getQuantity() {
-        return appDatabaseParkingLot.motorcycleDao().getMotorcycleQuantity();
-    }
-
-    @Override
-    public List<Motorcycle> getMotorcycle() {
-        return new MotorcycleMapper().listMotorcycleRoomToListMotorcycle(appDatabaseParkingLot.motorcycleDao().getMotorcycles());
-    }*/
 }

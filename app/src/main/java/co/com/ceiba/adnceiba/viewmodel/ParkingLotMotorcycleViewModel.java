@@ -1,7 +1,6 @@
 package co.com.ceiba.adnceiba.viewmodel;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -12,8 +11,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import co.com.ceiba.adnceiba.asynctask.MotorcycleAsyncTask;
 import co.com.ceiba.application.services.MotorcycleApplicationService;
-import co.com.ceiba.domain.entity.Car;
 import co.com.ceiba.domain.entity.Motorcycle;
 import dagger.hilt.android.lifecycle.HiltViewModel;
 
@@ -39,22 +38,8 @@ public class ParkingLotMotorcycleViewModel extends ViewModel {
     }
 
     private void saveMotorcycle(Motorcycle motorcycle){
-        MotorcycleAsyncTask motorcycleAsyncTask = new MotorcycleAsyncTask();
+        MotorcycleAsyncTask motorcycleAsyncTask = new MotorcycleAsyncTask(motorcycleApplicationService);
         motorcycleAsyncTask.execute(motorcycle);
-    }
-
-    class MotorcycleAsyncTask extends AsyncTask<Motorcycle,String,Boolean> {
-
-        @Override
-        protected Boolean doInBackground(Motorcycle... motorcycles) {
-            try {
-                motorcycleApplicationService.saveMotorcycle(motorcycles[0]);
-                return true;
-            }catch (Exception e){
-                Log.e("Error1",e.getMessage());
-                return false;
-            }
-        }
     }
 
     public List<Motorcycle> getMotorcycles(){
@@ -66,7 +51,7 @@ public class ParkingLotMotorcycleViewModel extends ViewModel {
             }
         });
         try {
-            Thread.sleep(10000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
 
         }

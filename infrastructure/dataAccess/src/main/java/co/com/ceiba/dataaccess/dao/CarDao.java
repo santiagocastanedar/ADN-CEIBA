@@ -11,7 +11,7 @@ import co.com.ceiba.dataaccess.entity.CarRoom;
 
 @Dao
 public interface CarDao {
-    @Query("SELECT * FROM cars WHERE plate IN (:plate) AND departureDate IN (null)")
+    @Query("SELECT * FROM cars WHERE plate IN (:plate) AND departureDate IS NULL")
     CarRoom getCarRoom(String plate);
 
     @Query("SELECT COUNT(*) FROM cars")
@@ -20,9 +20,10 @@ public interface CarDao {
     @Query("SELECT * FROM cars WHERE departureDate IS NULL")
     List<CarRoom> getCars();
 
+    @Query("UPDATE cars SET departureDate = :departureDate WHERE plate = :plate AND departureDate IS NULL")
+    public void updateDepartureDate(String departureDate,String plate);
+
     @Insert
     void insertCar(CarRoom carRoom);
 
-    @Update
-    public void updateDepartureDate(CarRoom carRoom);
 }
