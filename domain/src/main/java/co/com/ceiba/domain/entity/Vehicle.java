@@ -2,6 +2,7 @@ package co.com.ceiba.domain.entity;
 import co.com.ceiba.domain.exception.WrongDateException;
 import co.com.ceiba.domain.exception.WrongPlateException;
 import static co.com.ceiba.domain.utils.Constant.PLATE_CHARACTERS_REQUIERE;
+
 public class Vehicle {
     private String plate;
     private String entryDate;
