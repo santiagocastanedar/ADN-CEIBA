@@ -12,6 +12,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import co.com.ceiba.adnceiba.asynctask.CarAsyncTask;
+import co.com.ceiba.adnceiba.asynctask.VehicleAsynckTaskParams;
 import co.com.ceiba.application.services.CarAplicationServices;
 import co.com.ceiba.domain.entity.Car;
 import dagger.hilt.android.lifecycle.HiltViewModel;
@@ -22,7 +23,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 public class ParkingLotCarViewModel extends ViewModel {
 
     private final CarAplicationServices carAplicationServices;
-    private MutableLiveData<Boolean> carSaved;
+    private MutableLiveData<String> carSaved;
     List<Car> carList = new ArrayList<Car>();
 
     @Inject
@@ -34,7 +35,6 @@ public class ParkingLotCarViewModel extends ViewModel {
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
-
                 carList = carAplicationServices.getCars();
             }
         });
@@ -46,17 +46,15 @@ public class ParkingLotCarViewModel extends ViewModel {
         return carList;
     }
 
-    public LiveData<Boolean> executeSaveCar(Car car){
-        if(carSaved == null){
-            carSaved = new MutableLiveData<>();
-            saveCar(car);
-        }
+    public LiveData<String> executeSaveCar(String plate,String entrydate){
+        carSaved = new MutableLiveData<>();
+        saveCar(plate,entrydate);
         return carSaved;
     }
 
-    private void saveCar(Car car){
-        CarAsyncTask carAsyncTask = new CarAsyncTask(carAplicationServices);
-        carAsyncTask.execute(car);
+    private void saveCar(String plate,String entryDate){
+        VehicleAsynckTaskParams vehicleAsynckTaskParams = new VehicleAsynckTaskParams(plate,entryDate,0);
+        CarAsyncTask carAsyncTask = new CarAsyncTask(carAplicationServices,carSaved);
+        carAsyncTask.execute(vehicleAsynckTaskParams);
     }
-
 }

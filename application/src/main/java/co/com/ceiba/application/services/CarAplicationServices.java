@@ -1,6 +1,7 @@
 package co.com.ceiba.application.services;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -20,15 +21,20 @@ public class CarAplicationServices {
     }
 
     public void saveCar(Car car){
-        try {
-            parkingLotCarService.saveVehicle(car);
-        }catch (Exception e){
-            Log.e("mensaje",e.getMessage());
-        }
+        parkingLotCarService.saveVehicle(car);
     }
 
     public List<Car> getCars(){
         return parkingLotCarService.getCars();
     }
 
+    public String createCar(String plate, String entryDate){
+        String response = "";
+        try {
+            Car car = new Car(plate,entryDate);
+        }catch (Exception e){
+            response = e.getMessage();
+        }
+        return response;
+    }
 }

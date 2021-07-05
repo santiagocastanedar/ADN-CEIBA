@@ -11,7 +11,7 @@ public class Constant {
     public static final String PLATE_REST = "A";
     public static final String CAR = "car";
     public static final String MOTORCYCLE = "motorcycle";
-    public static final int MAX_QUANTITY_CAR = 4;
+    public static final int MAX_QUANTITY_CAR = 20;
     public static final int MAX_QUANTITY_MOTORCYCLE = 10;
     public static final double RATE_CAR_PER_HOUR = 1000;
     public static final double RATE_CAR_PER_DAY = 8000;

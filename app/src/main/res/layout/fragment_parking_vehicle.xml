@@ -31,7 +31,8 @@
                 android:textAlignment="center"
                 android:hint="Placa"
                 android:maxLength="6"
-                android:inputType="textCapCharacters"/>
+                android:inputType="textCapCharacters"
+                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ"/>
 
             <RadioGroup
                 android:layout_width="wrap_content"
@@ -62,7 +63,8 @@
                 android:hint="Cilindraje"
                 android:maxLength="6"
                 android:inputType="number"
-                android:visibility="gone"/>
+                android:visibility="gone"
+                android:text="0"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

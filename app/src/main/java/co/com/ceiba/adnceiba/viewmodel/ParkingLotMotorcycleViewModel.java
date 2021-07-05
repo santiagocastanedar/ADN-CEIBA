@@ -12,6 +12,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import co.com.ceiba.adnceiba.asynctask.MotorcycleAsyncTask;
+import co.com.ceiba.adnceiba.asynctask.VehicleAsynckTaskParams;
 import co.com.ceiba.application.services.MotorcycleApplicationService;
 import co.com.ceiba.domain.entity.Motorcycle;
 import dagger.hilt.android.lifecycle.HiltViewModel;
@@ -21,7 +22,7 @@ public class ParkingLotMotorcycleViewModel extends ViewModel {
 
 
     private final MotorcycleApplicationService motorcycleApplicationService;
-    private MutableLiveData<Boolean> motorcycleSaved;
+    private MutableLiveData<String> motorcycleSaved;
     List<Motorcycle> motorcycleList = new ArrayList<Motorcycle>();
 
     @Inject
@@ -29,17 +30,16 @@ public class ParkingLotMotorcycleViewModel extends ViewModel {
         this.motorcycleApplicationService =  motorcycleApplicationService;
     }
 
-    public LiveData<Boolean> executeSaveMotorcycle(Motorcycle motorcycle){
-        if(motorcycleSaved == null){
-            motorcycleSaved = new MutableLiveData<>();
-            saveMotorcycle(motorcycle);
-        }
+    public LiveData<String> executeSaveMotorcycle(String plate,String entrydate,int cylinder){
+        motorcycleSaved = new MutableLiveData<>();
+        saveMotorcycle(plate,entrydate,cylinder);
         return motorcycleSaved;
     }
 
-    private void saveMotorcycle(Motorcycle motorcycle){
-        MotorcycleAsyncTask motorcycleAsyncTask = new MotorcycleAsyncTask(motorcycleApplicationService);
-        motorcycleAsyncTask.execute(motorcycle);
+    private void saveMotorcycle(String plate,String entrydate,int cylinder){
+        VehicleAsynckTaskParams vehicleAsynckTaskParams = new VehicleAsynckTaskParams(plate,entrydate,cylinder);
+        MotorcycleAsyncTask motorcycleAsyncTask = new MotorcycleAsyncTask(motorcycleApplicationService,motorcycleSaved);
+        motorcycleAsyncTask.execute(vehicleAsynckTaskParams);
     }
 
     public List<Motorcycle> getMotorcycles(){

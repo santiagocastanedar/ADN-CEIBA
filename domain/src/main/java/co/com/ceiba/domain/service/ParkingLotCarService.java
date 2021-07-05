@@ -12,6 +12,7 @@ import co.com.ceiba.domain.entity.Car;
 import co.com.ceiba.domain.exception.MaxCapacityException;
 import co.com.ceiba.domain.exception.RestPlateException;
 import co.com.ceiba.domain.exception.VehicleAlreadyExistsException;
+import co.com.ceiba.domain.exception.WrongPlateException;
 import co.com.ceiba.domain.repository.ParkingLotCarRepository;
 
 import static co.com.ceiba.domain.utils.Constant.DATE_FORMAT_PAYMENT;

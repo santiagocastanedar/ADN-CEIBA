@@ -42,7 +42,7 @@ public class Vehicle {
     }
 
     public void setEntryDate(String entryDate) {
-         validateDate(entryDate);
+        validateDate(entryDate);
         this.entryDate = entryDate;
     }
 

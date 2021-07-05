@@ -54,21 +54,19 @@ public class ParkingVehicleFragment extends Fragment {
                 String plate = binding.txtPlate.getText().toString();
 
                 if(binding.radioCar.isChecked()){
-                    Car car = new Car(plate,entryDate);
-                    parkingLotCarViewModel.executeSaveCar(car);
-                    binding.txtPlate.setText("");
-                    binding.txtcylinder.setText("");
-                    Toast.makeText(getContext(), "Vehiculo ingresado con exito ", Toast.LENGTH_LONG).show();
+                    parkingLotCarViewModel.executeSaveCar(plate,entryDate).observe(getViewLifecycleOwner(),carSaved -> {
+                        Toast.makeText(getContext(), carSaved, Toast.LENGTH_LONG).show();
+                    });
                 }else if(binding.radioMotorcycle.isChecked()){
                     int cylinder = Integer.parseInt(binding.txtcylinder.getText().toString());
-                    Motorcycle motorcycle = new Motorcycle(plate,entryDate,cylinder);
-                    parkingLotMotorcycleViewModel.executeSaveMotorcycle(motorcycle);
-                    binding.txtPlate.setText("");
-                    binding.txtcylinder.setText("");
-                    Toast.makeText(getContext(), "Vehiculo ingresado con exito ", Toast.LENGTH_LONG).show();
+                    parkingLotMotorcycleViewModel.executeSaveMotorcycle(plate,entryDate,cylinder).observe(getViewLifecycleOwner(),motorcycleSaved ->{
+                        Toast.makeText(getContext(), motorcycleSaved, Toast.LENGTH_LONG).show();
+                    });
                 }else{
                     Toast.makeText(getContext(), "Debe seleccionar el tipo de vehiculo.", Toast.LENGTH_LONG).show();
                 }
+                binding.txtPlate.setText("");
+                binding.txtcylinder.setText("0");
             }
         });
 
