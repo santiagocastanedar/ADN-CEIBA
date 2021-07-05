@@ -10,26 +10,22 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import co.com.ceiba.domain.entity.Car;
+import co.com.ceiba.domain.entity.Motorcycle;
 import co.com.ceiba.domain.exception.RestPlateException;
-import co.com.ceiba.domain.exception.VehicleAlreadyExistsException;
-import co.com.ceiba.domain.repository.ParkingLotCarRepository;
+import co.com.ceiba.domain.repository.ParkingLotMotorcycleRepository;
 
-public class ParkingLotCarServiceTest {
+import static org.junit.Assert.*;
+
+public class ParkingLotMotorcycleServiceTest {
 
     @Rule
     public MockitoRule mockitoRule = MockitoJUnit.rule();
 
     @Mock
-    private ParkingLotCarRepository parkingLotCarRepository;
+    private ParkingLotMotorcycleRepository parkingLotMotorcycleRepository;
 
     @InjectMocks
-    ParkingLotCarService parkingLotCarService;
+    ParkingLotMotorcycleService parkingLotMotorcycleService;
 
     @Before
     public void init(){
@@ -41,11 +37,11 @@ public class ParkingLotCarServiceTest {
         //Arrange
         String entryDate = ("2021-07-06 7:00");
         String expectedMessage = "La placa ingresada no tiene permitido ingresar este dia";
-        Car car = new Car("AGU249",entryDate);
+        Motorcycle motorcycle = new Motorcycle("AGU249",entryDate,750);
 
         try {
             //Act
-            parkingLotCarService.saveVehicle(car);
+            parkingLotMotorcycleService.saveMotorcycle(motorcycle);
             Assert.fail();
         }catch (RestPlateException ex){
             //Assert

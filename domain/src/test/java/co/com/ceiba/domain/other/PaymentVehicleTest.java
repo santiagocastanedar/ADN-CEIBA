@@ -108,6 +108,17 @@ public class PaymentVehicleTest {
     }
 
     @Test
+    public void calculateNotExtraPayment() {
+        //Arrange
+        double extraPaymentExpected = 0;
+        motorcycle.setCylinder(200);
+        //Act
+        double extraPayment = paymentVehicle.calculateExtraPayment(motorcycle);
+        //Assert
+        Assert.assertEquals(extraPaymentExpected,extraPayment,3);
+    }
+
+    @Test
     public void calculateTimeInParkingLot() {
         //Arrange
         String departureDate = ("2021-06-29 10:00");

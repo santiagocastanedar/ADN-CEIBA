@@ -5,16 +5,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
 import javax.inject.Inject;
-
 import co.com.ceiba.domain.entity.Car;
 import co.com.ceiba.domain.exception.MaxCapacityException;
 import co.com.ceiba.domain.exception.RestPlateException;
 import co.com.ceiba.domain.exception.VehicleAlreadyExistsException;
-import co.com.ceiba.domain.exception.WrongPlateException;
 import co.com.ceiba.domain.repository.ParkingLotCarRepository;
-
 import static co.com.ceiba.domain.utils.Constant.DATE_FORMAT_PAYMENT;
 import static co.com.ceiba.domain.utils.Constant.MAX_QUANTITY_CAR;
 import static co.com.ceiba.domain.utils.Constant.MONDAY_PERMIT;
@@ -53,12 +49,12 @@ public class ParkingLotCarService {
         SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT_PAYMENT);
 
         try {
-            date = (Date)formatter.parse(entryDate);
+            date = formatter.parse(entryDate);
             if(date.getDay() != SUNDAY_PERMIT && date.getDay() != MONDAY_PERMIT && plate.startsWith(PLATE_REST)){
                 throw new RestPlateException();
             }
         } catch (ParseException e) {
-
+            e.printStackTrace();
         }
     }
 

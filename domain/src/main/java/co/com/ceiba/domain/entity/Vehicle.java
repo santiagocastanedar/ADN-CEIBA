@@ -1,22 +1,7 @@
 package co.com.ceiba.domain.entity;
-
-
-
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import co.com.ceiba.domain.exception.RestPlateException;
 import co.com.ceiba.domain.exception.WrongDateException;
 import co.com.ceiba.domain.exception.WrongPlateException;
-
-import static co.com.ceiba.domain.utils.Constant.DATE_FORMAT_PAYMENT;
-import static co.com.ceiba.domain.utils.Constant.MONDAY_PERMIT;
 import static co.com.ceiba.domain.utils.Constant.PLATE_CHARACTERS_REQUIERE;
-import static co.com.ceiba.domain.utils.Constant.PLATE_REST;
-import static co.com.ceiba.domain.utils.Constant.SUNDAY_PERMIT;
-
 
 public class Vehicle {
     private String plate;
@@ -60,7 +45,7 @@ public class Vehicle {
     }
 
     public void validateDate(String date){
-        if(date.equals("")){
+        if("".equals(date)){
             throw new WrongDateException();
         }
     }

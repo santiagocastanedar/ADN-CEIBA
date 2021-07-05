@@ -1,5 +1,6 @@
 package co.com.ceiba.domain.other;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -51,7 +52,7 @@ public class PaymentVehicle {
             Date departureDateFormat = dateFormat.parse(departureDate);
             difference = Math.abs(entryDateFormat.getTime() - departureDateFormat.getTime());
             difference = difference / TIME_TRANSFORM;
-        }catch (Exception e){
+        }catch (ParseException e){
             throw new WrongDateException();
         }
         return difference;

@@ -28,13 +28,4 @@ public class CarAplicationServices {
         return parkingLotCarService.getCars();
     }
 
-    public String createCar(String plate, String entryDate){
-        String response = "";
-        try {
-            Car car = new Car(plate,entryDate);
-        }catch (Exception e){
-            response = e.getMessage();
-        }
-        return response;
-    }
 }

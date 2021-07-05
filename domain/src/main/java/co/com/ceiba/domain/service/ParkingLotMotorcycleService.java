@@ -57,7 +57,7 @@ public class ParkingLotMotorcycleService {
                 throw new RestPlateException();
             }
         } catch (ParseException e) {
-
+            e.printStackTrace();
         }
     }
 }
