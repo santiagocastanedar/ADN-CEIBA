@@ -10,6 +10,7 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -47,7 +48,7 @@ public class ParkingLotCarServiceTest {
             //Act
             parkingLotCarService.saveVehicle(car);
             Assert.fail();
-        }catch (RestPlateException ex){
+        }catch (RestPlateException | ParseException ex){
             //Assert
             Assert.assertEquals(expectedMessage,ex.getMessage());
         }

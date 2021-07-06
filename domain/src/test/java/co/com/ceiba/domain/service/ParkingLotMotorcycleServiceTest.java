@@ -9,6 +9,9 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
+
+import java.text.ParseException;
+
 import co.com.ceiba.domain.entity.Motorcycle;
 import co.com.ceiba.domain.exception.RestPlateException;
 import co.com.ceiba.domain.repository.ParkingLotMotorcycleRepository;
@@ -42,7 +45,7 @@ public class ParkingLotMotorcycleServiceTest {
             //Act
             parkingLotMotorcycleService.saveMotorcycle(motorcycle);
             Assert.fail();
-        }catch (RestPlateException ex){
+        }catch (RestPlateException | ParseException ex){
             //Assert
             Assert.assertEquals(expectedMessage,ex.getMessage());
         }

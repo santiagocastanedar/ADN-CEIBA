@@ -2,6 +2,7 @@ package co.com.ceiba.application.services;
 
 import android.util.Log;
 
+import java.text.ParseException;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -23,8 +24,8 @@ public class MotorcycleApplicationService {
     public void saveMotorcycle(Motorcycle motorcycle){
         try {
             parkingLotMotorcycleService.saveMotorcycle(motorcycle);
-        }catch (Exception e){
-            Log.e("mensaje",e.getMessage());
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
     }
 
