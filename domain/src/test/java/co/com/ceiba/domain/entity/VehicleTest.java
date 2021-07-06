@@ -9,8 +9,12 @@ import java.util.Date;
 import co.com.ceiba.domain.exception.WrongDateException;
 import co.com.ceiba.domain.exception.WrongPlateException;
 
+import static co.com.ceiba.domain.utils.Constant.CAR;
+import static co.com.ceiba.domain.utils.Constant.DATE_FORMAT_PAYMENT;
+import static co.com.ceiba.domain.utils.Constant.MOTORCYCLE;
+
 public class VehicleTest {
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT_PAYMENT);
     String date = dateFormat.format(new Date());
 
     @Test
@@ -43,7 +47,7 @@ public class VehicleTest {
     public void EntryDateCorrect(){
         //Arrange
         String plate = "FGU249";
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT_PAYMENT);
         String dateExpected = dateFormat.format(new Date());
 
         //Act
@@ -68,4 +72,29 @@ public class VehicleTest {
         }
     }
 
+    @Test
+    public void getTypeCar(){
+        //Arrange
+        String plate = "FGU249";
+        String typeExpected = CAR;
+
+        //Act
+        Car car =  new Car(plate,date);
+        String type = car.getType();
+        //Assert
+        Assert.assertEquals(typeExpected,type);
+    }
+
+    @Test
+    public void getTypeMotorcycle(){
+        //Arrange
+        String plate = "FGU249";
+        String typeExpected = MOTORCYCLE;
+
+        //Act
+        Motorcycle motorcycle =  new Motorcycle(plate,date,200);
+        String type = motorcycle.getType();
+        //Assert
+        Assert.assertEquals(typeExpected,type);
+    }
 }
