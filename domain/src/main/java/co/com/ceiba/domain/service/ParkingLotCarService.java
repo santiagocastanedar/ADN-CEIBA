@@ -1,12 +1,10 @@
 package co.com.ceiba.domain.service;
 
 
-import android.util.Log;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import javax.inject.Inject;
 import co.com.ceiba.domain.entity.Car;
