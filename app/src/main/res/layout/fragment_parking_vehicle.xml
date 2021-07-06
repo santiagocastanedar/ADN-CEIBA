@@ -7,7 +7,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/scrollViewCreate">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -20,19 +21,35 @@
                 android:textSize="30dp"
                 android:fontFamily="cursive"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="10dp"/>
 
-            <EditText
-                android:layout_width="200dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
-                android:id="@+id/editTextPlate"
-                android:textAlignment="center"
-                android:hint="Placa"
-                android:maxLength="6"
-                android:inputType="textCapCharacters"
-                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal">
+                <EditText
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/editTextPlate"
+                    android:textAlignment="center"
+                    android:hint="Placa"
+                    android:maxLength="6"
+                    android:inputType="textCapCharacters"
+                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"/>
+                <EditText
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/editTextCylinder"
+                    android:textAlignment="center"
+                    android:hint="Cilindraje"
+                    android:maxLength="6"
+                    android:inputType="number"
+                    android:visibility="gone"/>
+            </LinearLayout>
 
             <RadioGroup
                 android:layout_width="wrap_content"
@@ -53,18 +70,7 @@
                     android:id="@+id/radioMotorcycle"
                     android:text="Moto"/>
             </RadioGroup>
-            <EditText
-                android:layout_width="200dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
-                android:id="@+id/editTextCylinder"
-                android:textAlignment="center"
-                android:hint="Cilindraje"
-                android:maxLength="6"
-                android:inputType="number"
-                android:visibility="gone"
-                android:text="0"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -73,20 +79,20 @@
                 android:textSize="20dp"
                 android:fontFamily="sans-serif"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"/>
-            <CalendarView
+                android:layout_marginTop="15dp"/>
+            <DatePicker
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/calendarEntryDate"
-                android:layout_gravity="center_horizontal" />
-
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:gravity="center_horizontal"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="15dp">
 
                 <Button
                     android:layout_gravity="center_horizontal"
