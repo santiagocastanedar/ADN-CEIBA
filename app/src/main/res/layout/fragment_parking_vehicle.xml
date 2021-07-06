@@ -15,7 +15,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tvTitleVehicle"
+                android:id="@+id/textViewTitleVehicle"
                 android:text="Información del vehiculo"
                 android:textSize="30dp"
                 android:fontFamily="cursive"
@@ -27,7 +27,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="30dp"
-                android:id="@+id/txtPlate"
+                android:id="@+id/editTextPlate"
                 android:textAlignment="center"
                 android:hint="Placa"
                 android:maxLength="6"
@@ -37,7 +37,7 @@
             <RadioGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/rgTypeVehicle"
+                android:id="@+id/radioGroupTypeVehicle"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="15dp"
                 android:orientation="horizontal">
@@ -58,7 +58,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="30dp"
-                android:id="@+id/txtcylinder"
+                android:id="@+id/editTextCylinder"
                 android:textAlignment="center"
                 android:hint="Cilindraje"
                 android:maxLength="6"
@@ -68,7 +68,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tvEntryDate"
+                android:id="@+id/textViewEntryDate"
                 android:text="Fecha de entrada"
                 android:textSize="20dp"
                 android:fontFamily="sans-serif"
@@ -92,7 +92,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:id="@+id/btnCreateVehicle"
+                    android:id="@+id/buttonCreateVehicle"
                     android:text="Guardar"/>
             </LinearLayout>
         </LinearLayout>

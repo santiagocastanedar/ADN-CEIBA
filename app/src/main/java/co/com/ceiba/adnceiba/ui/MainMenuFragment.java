@@ -35,14 +35,14 @@ public class MainMenuFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.btnAddVehicle.setOnClickListener(new View.OnClickListener() {
+        binding.buttonAddVehicle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Navigation.findNavController(view).navigate(R.id.action_mainMenuFragment_to_parkingVehicleFragment);
             }
         });
 
-        binding.btnViewVehicle.setOnClickListener(new View.OnClickListener() {
+        binding.buttonViewVehicle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 binding.progressAction.setVisibility(View.VISIBLE);

@@ -15,7 +15,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tvTitle"
+                android:id="@+id/textViewTitle"
                 android:text="ParkingLot Manager"
                 android:fontFamily="cursive"
                 android:textSize="40dp"
@@ -24,7 +24,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tvDescription"
+                android:id="@+id/textViewDescription"
                 android:text="Aplicación para el manejo de su estacionamiento"
                 android:textSize="30dp"
                 android:layout_gravity="center_horizontal"
@@ -35,7 +35,7 @@
             <Button
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/btnAddVehicle"
+                android:id="@+id/buttonAddVehicle"
                 android:layout_marginTop="80dp"
                 android:text="Añadir vehiculo"
                 android:layout_gravity="center_horizontal"
@@ -43,7 +43,7 @@
             <Button
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/btnViewVehicle"
+                android:id="@+id/buttonViewVehicle"
                 android:layout_marginTop="40dp"
                 android:text="Ver vehiculos"
                 android:layout_gravity="center_horizontal"

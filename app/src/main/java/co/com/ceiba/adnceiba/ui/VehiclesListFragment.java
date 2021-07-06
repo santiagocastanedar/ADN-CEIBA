@@ -100,7 +100,7 @@ public class VehiclesListFragment extends Fragment implements VehicleView{
     }
 
     public void setUpRecyclerView() throws InterruptedException {
-        RecyclerView recyclerView = binding.rvVehicles;
+        RecyclerView recyclerView = binding.recyclerViewVehicles;
         recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
         cars =  parkingLotCarViewModel.getCars();
         motorcycleList = parkingLotMotorcycleViewModel.getMotorcycles();

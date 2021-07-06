@@ -47,26 +47,26 @@ public class ParkingVehicleFragment extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         init();
-        binding.btnCreateVehicle.setOnClickListener(new View.OnClickListener() {
+        binding.buttonCreateVehicle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String plate = binding.txtPlate.getText().toString();
+                String plate = binding.editTextPlate.getText().toString();
 
                 if(binding.radioCar.isChecked()){
                     parkingLotCarViewModel.executeSaveCar(plate,entryDate).observe(getViewLifecycleOwner(),carSaved -> {
                         Toast.makeText(getContext(), carSaved, Toast.LENGTH_LONG).show();
                     });
                 }else if(binding.radioMotorcycle.isChecked()){
-                    int cylinder = Integer.parseInt(binding.txtcylinder.getText().toString());
+                    int cylinder = Integer.parseInt(binding.editTextCylinder.getText().toString());
                     parkingLotMotorcycleViewModel.executeSaveMotorcycle(plate,entryDate,cylinder).observe(getViewLifecycleOwner(),motorcycleSaved ->{
                         Toast.makeText(getContext(), motorcycleSaved, Toast.LENGTH_LONG).show();
                     });
                 }else{
                     Toast.makeText(getContext(), "Debe seleccionar el tipo de vehiculo.", Toast.LENGTH_LONG).show();
                 }
-                binding.txtPlate.setText("");
-                binding.txtcylinder.setText("0");
+                binding.editTextPlate.setText("");
+                binding.editTextCylinder.setText("0");
             }
         });
 
@@ -80,13 +80,13 @@ public class ParkingVehicleFragment extends Fragment {
             }
         });
 
-        binding.rgTypeVehicle.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        binding.radioGroupTypeVehicle.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if(binding.radioMotorcycle.isChecked()){
-                    binding.txtcylinder.setVisibility(View.VISIBLE);
+                    binding.editTextCylinder.setVisibility(View.VISIBLE);
                 }else{
-                    binding.txtcylinder.setVisibility(View.GONE);
+                    binding.editTextCylinder.setVisibility(View.GONE);
                 }
             }
         });

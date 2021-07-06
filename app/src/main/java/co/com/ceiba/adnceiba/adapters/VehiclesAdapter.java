@@ -6,29 +6,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import co.com.ceiba.adnceiba.R;
 import co.com.ceiba.adnceiba.ui.VehicleView;
 import co.com.ceiba.domain.entity.Vehicle;
 
-import static co.com.ceiba.domain.utils.Constant.CAR;
-
 
 public class VehiclesAdapter extends RecyclerView.Adapter<VehiclesAdapter.ViewHolder>{
 
     private List<Vehicle> vehicleArrayList;
-    private View.OnClickListener listener;
     private VehicleView vehicleView;
 
     public VehiclesAdapter(ArrayList<Vehicle> vehicleArrayList,VehicleView vehicleView) {
@@ -69,10 +63,10 @@ public class VehiclesAdapter extends RecyclerView.Adapter<VehiclesAdapter.ViewHo
         Button btnPay;
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
-            tvPlate = itemView.findViewById(R.id.tvPlate);
-            tvEntryDate = itemView.findViewById(R.id.tvEntryDate);
-            tvType = itemView.findViewById(R.id.tvType);
-            btnPay = itemView.findViewById(R.id.btnPay);
+            tvPlate = itemView.findViewById(R.id.textViewPlate);
+            tvEntryDate = itemView.findViewById(R.id.textViewEntryDateList);
+            tvType = itemView.findViewById(R.id.textViewType);
+            btnPay = itemView.findViewById(R.id.buttonPay);
         }
 
         public void addVehicles(Vehicle vehicle) {
