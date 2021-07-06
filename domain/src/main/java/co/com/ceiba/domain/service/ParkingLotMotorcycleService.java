@@ -2,6 +2,7 @@ package co.com.ceiba.domain.service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -48,12 +49,14 @@ public class ParkingLotMotorcycleService {
     }
 
     private void validateEntryPlate(String plate, String entryDate){
-        Date date;
+        Calendar calendar = Calendar.getInstance();
+        int dayOfweek;
         SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT_PAYMENT);
 
         try {
-            date = (Date)formatter.parse(entryDate);
-            if(date.getDay() != SUNDAY_PERMIT && date.getDay() != MONDAY_PERMIT && plate.startsWith(PLATE_REST)){
+            calendar.setTime(formatter.parse(entryDate));
+            dayOfweek = calendar.get(Calendar.DAY_OF_WEEK);
+            if(dayOfweek != SUNDAY_PERMIT && dayOfweek != MONDAY_PERMIT && plate.startsWith(PLATE_REST)){
                 throw new RestPlateException();
             }
         } catch (ParseException e) {
