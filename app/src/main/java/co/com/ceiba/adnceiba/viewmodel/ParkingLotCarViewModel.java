@@ -24,25 +24,21 @@ public class ParkingLotCarViewModel extends ViewModel {
 
     private final CarAplicationServices carAplicationServices;
     private MutableLiveData<String> carSaved;
-    List<Car> carList = new ArrayList<Car>();
+    private List<Car> carList = new ArrayList<Car>();
 
     @Inject
     public ParkingLotCarViewModel(CarAplicationServices carAplicationServices){
         this.carAplicationServices = carAplicationServices;
     }
 
-    public List<Car> getCars(){
+    public List<Car> getCars() throws InterruptedException {
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
                 carList = carAplicationServices.getCars();
             }
         });
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Thread.sleep(5000);
         return carList;
     }
 

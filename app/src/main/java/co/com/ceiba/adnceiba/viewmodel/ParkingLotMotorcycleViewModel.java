@@ -23,7 +23,7 @@ public class ParkingLotMotorcycleViewModel extends ViewModel {
 
     private final MotorcycleApplicationService motorcycleApplicationService;
     private MutableLiveData<String> motorcycleSaved;
-    List<Motorcycle> motorcycleList = new ArrayList<Motorcycle>();
+    private List<Motorcycle> motorcycleList = new ArrayList<Motorcycle>();
 
     @Inject
     public ParkingLotMotorcycleViewModel(MotorcycleApplicationService motorcycleApplicationService){
@@ -42,7 +42,7 @@ public class ParkingLotMotorcycleViewModel extends ViewModel {
         motorcycleAsyncTask.execute(vehicleAsynckTaskParams);
     }
 
-    public List<Motorcycle> getMotorcycles(){
+    public List<Motorcycle> getMotorcycles() throws InterruptedException {
 
         AsyncTask.execute(new Runnable() {
             @Override
@@ -50,11 +50,7 @@ public class ParkingLotMotorcycleViewModel extends ViewModel {
                 motorcycleList = motorcycleApplicationService.getMotorcycle();
             }
         });
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-
-        }
+        Thread.sleep(5000);
         return motorcycleList;
     }
 }

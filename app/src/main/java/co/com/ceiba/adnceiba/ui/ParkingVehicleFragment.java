@@ -29,8 +29,8 @@ import dagger.hilt.android.AndroidEntryPoint;
 @AndroidEntryPoint
 public class ParkingVehicleFragment extends Fragment {
 
-    ParkingLotCarViewModel parkingLotCarViewModel;
-    ParkingLotMotorcycleViewModel parkingLotMotorcycleViewModel;
+    private ParkingLotCarViewModel parkingLotCarViewModel;
+    private ParkingLotMotorcycleViewModel parkingLotMotorcycleViewModel;
     private FragmentParkingVehicleBinding binding;
     private String entryDate;
 

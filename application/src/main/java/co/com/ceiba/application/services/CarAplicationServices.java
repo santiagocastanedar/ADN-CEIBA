@@ -3,6 +3,7 @@ package co.com.ceiba.application.services;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.text.ParseException;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -13,7 +14,7 @@ import co.com.ceiba.domain.service.ParkingLotCarService;
 public class CarAplicationServices {
 
     @Inject
-    ParkingLotCarService parkingLotCarService;
+    public ParkingLotCarService parkingLotCarService;
 
     @Inject
     public CarAplicationServices(){
@@ -21,7 +22,11 @@ public class CarAplicationServices {
     }
 
     public void saveCar(Car car){
-        parkingLotCarService.saveVehicle(car);
+        try {
+            parkingLotCarService.saveVehicle(car);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public List<Car> getCars(){

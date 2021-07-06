@@ -1,7 +1,5 @@
 package co.com.ceiba.domain.service;
 
-
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -26,7 +24,7 @@ public class ParkingLotCarService {
         this.parkingLotCarRepository = parkingLotCarRepository;
     }
 
-    public void saveVehicle(Car car){
+    public void saveVehicle(Car car) throws ParseException {
         if(parkingLotCarRepository.getCar(car.getPlate()) != null){
             throw new VehicleAlreadyExistsException();
         }
@@ -45,19 +43,15 @@ public class ParkingLotCarService {
         return parkingLotCarRepository.getQuantity();
     }
 
-    private void validateEntryPlate(String plate, String entryDate){
+    private void validateEntryPlate(String plate, String entryDate) throws ParseException {
         Calendar calendar = Calendar.getInstance();
         int dayOfweek;
         SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT_PAYMENT);
 
-        try {
-            calendar.setTime(formatter.parse(entryDate));
-            dayOfweek = calendar.get(Calendar.DAY_OF_WEEK);
-            if(dayOfweek != SUNDAY_PERMIT && dayOfweek != MONDAY_PERMIT && plate.startsWith(PLATE_REST)){
-                throw new RestPlateException();
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
+        calendar.setTime(formatter.parse(entryDate));
+        dayOfweek = calendar.get(Calendar.DAY_OF_WEEK);
+        if(dayOfweek != SUNDAY_PERMIT && dayOfweek != MONDAY_PERMIT && plate.startsWith(PLATE_REST)){
+            throw new RestPlateException();
         }
     }
 }

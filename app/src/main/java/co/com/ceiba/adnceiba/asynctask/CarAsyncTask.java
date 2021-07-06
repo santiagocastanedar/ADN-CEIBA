@@ -9,8 +9,8 @@ import co.com.ceiba.domain.entity.Car;
 
 public class CarAsyncTask extends AsyncTask<VehicleAsynckTaskParams,String,String> {
 
-    CarAplicationServices carAplicationServices;
-    MutableLiveData<String> carSaved;
+    private CarAplicationServices carAplicationServices;
+    private MutableLiveData<String> carSaved;
 
     public CarAsyncTask(CarAplicationServices carAplicationServices,MutableLiveData carSaved) {
         this.carAplicationServices = carAplicationServices;

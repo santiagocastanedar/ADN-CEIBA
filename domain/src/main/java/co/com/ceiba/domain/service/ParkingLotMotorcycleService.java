@@ -28,7 +28,7 @@ public class ParkingLotMotorcycleService {
         this.motorcycleRepository = parkingLotMotorcycleRepository;
     }
 
-    public void saveMotorcycle(Motorcycle motorcycle){
+    public void saveMotorcycle(Motorcycle motorcycle) throws ParseException {
         if(motorcycleRepository.motorcycleExist(motorcycle.getPlate()) != null){
             throw new VehicleAlreadyExistsException();
         }
@@ -47,19 +47,15 @@ public class ParkingLotMotorcycleService {
         return motorcycleRepository.getQuantity();
     }
 
-    private void validateEntryPlate(String plate, String entryDate){
+    private void validateEntryPlate(String plate, String entryDate) throws ParseException {
         Calendar calendar = Calendar.getInstance();
         int dayOfweek;
         SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT_PAYMENT);
 
-        try {
             calendar.setTime(formatter.parse(entryDate));
             dayOfweek = calendar.get(Calendar.DAY_OF_WEEK);
             if(dayOfweek != SUNDAY_PERMIT && dayOfweek != MONDAY_PERMIT && plate.startsWith(PLATE_REST)){
                 throw new RestPlateException();
             }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
     }
 }

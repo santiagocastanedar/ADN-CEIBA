@@ -36,14 +36,14 @@ import dagger.hilt.android.AndroidEntryPoint;
 public class VehiclesListFragment extends Fragment implements VehicleView{
 
     private FragmentVehiclesListBinding binding;
-    ParkingLotCarViewModel parkingLotCarViewModel;
-    ParkingLotMotorcycleViewModel parkingLotMotorcycleViewModel;
-    PaymentAplication paymentAplication;
+    private ParkingLotCarViewModel parkingLotCarViewModel;
+    private ParkingLotMotorcycleViewModel parkingLotMotorcycleViewModel;
+    private PaymentAplication paymentAplication;
     private ArrayList<Vehicle> vehicleArrayList;
-    List<Car> cars = new ArrayList<>();
-    List<Motorcycle> motorcycleList = new ArrayList<>();
-    AlertDialog.Builder builder;
-    VehiclesAdapter adapter;
+    private List<Car> cars = new ArrayList<>();
+    private List<Motorcycle> motorcycleList = new ArrayList<>();
+    private AlertDialog.Builder builder;
+    private VehiclesAdapter adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,7 +63,11 @@ public class VehiclesListFragment extends Fragment implements VehicleView{
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         init();
-        setUpRecyclerView();
+        try {
+            setUpRecyclerView();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -95,7 +99,7 @@ public class VehiclesListFragment extends Fragment implements VehicleView{
         builder = new AlertDialog.Builder(getActivity());
     }
 
-    public void setUpRecyclerView(){
+    public void setUpRecyclerView() throws InterruptedException {
         RecyclerView recyclerView = binding.rvVehicles;
         recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
         cars =  parkingLotCarViewModel.getCars();

@@ -11,7 +11,7 @@ import co.com.ceiba.domain.repository.ParkingLotMotorcycleRepository;
 
 public class ParkingLotMotorcycleRepositoryImpl implements ParkingLotMotorcycleRepository {
 
-    AppDatabase appDatabaseParkingLot;
+    private AppDatabase appDatabaseParkingLot;
 
     @Inject
     public ParkingLotMotorcycleRepositoryImpl(AppDatabase appDatabaseParkingLot){

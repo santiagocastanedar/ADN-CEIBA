@@ -4,5 +4,4 @@ import co.com.ceiba.domain.entity.Vehicle;
 
 public interface VehicleView{
     void onClickPost(Vehicle vehicle);
-
 }

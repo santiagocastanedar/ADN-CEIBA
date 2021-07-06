@@ -21,6 +21,4 @@ import dagger.hilt.android.components.ActivityComponent;
 public abstract class AppDatabase extends RoomDatabase {
     public abstract MotorcycleDao motorcycleDao();
     public abstract CarDao carDao();
-
-
 }

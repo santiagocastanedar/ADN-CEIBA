@@ -1,6 +1,6 @@
 package co.com.ceiba.domain.utils;
 
-public class Constant {
+public final class Constant {
 
     public static final int PLATE_CHARACTERS_REQUIERE = 6;
     public static final int CYLINDER_MIN_REQUIERE = 1;

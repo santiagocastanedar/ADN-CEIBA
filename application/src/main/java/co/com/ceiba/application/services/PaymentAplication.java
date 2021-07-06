@@ -18,7 +18,7 @@ import static co.com.ceiba.domain.utils.Constant.RATE_MOTORCYCLE_PER_HOUR;
 
 public class PaymentAplication {
 
-    PaymentVehicle paymentVehicle = new PaymentVehicle();
+    private PaymentVehicle paymentVehicle = new PaymentVehicle();
 
     public PaymentAplication(){
     }

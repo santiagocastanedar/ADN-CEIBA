@@ -6,7 +6,6 @@ import co.com.ceiba.domain.entity.Motorcycle;
 
 
 public interface ParkingLotMotorcycleRepository {
-
     Motorcycle motorcycleExist(String plate);
     void saveMotorcycle(Motorcycle motorcycle);
     int getQuantity();

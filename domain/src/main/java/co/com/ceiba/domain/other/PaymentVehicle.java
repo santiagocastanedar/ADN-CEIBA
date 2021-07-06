@@ -17,7 +17,6 @@ import static co.com.ceiba.domain.utils.Constant.TIME_TRANSFORM;
 
 public class PaymentVehicle {
 
-
     public double calculatePaymentVehicle(Vehicle vehicle,double rateHour,double rateDay) {
         int startDay = STARTDAY;
         int endDay = ENDDAY;

@@ -27,7 +27,7 @@ import static co.com.ceiba.domain.utils.Constant.CAR;
 
 public class VehiclesAdapter extends RecyclerView.Adapter<VehiclesAdapter.ViewHolder>{
 
-    List<Vehicle> vehicleArrayList;
+    private List<Vehicle> vehicleArrayList;
     private View.OnClickListener listener;
     private VehicleView vehicleView;
 

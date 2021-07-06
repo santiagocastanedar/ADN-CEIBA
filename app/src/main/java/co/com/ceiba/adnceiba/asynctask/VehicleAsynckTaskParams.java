@@ -1,9 +1,9 @@
 package co.com.ceiba.adnceiba.asynctask;
 
 public class VehicleAsynckTaskParams {
-    String plate;
-    String entrydate;
-    int cylinder;
+    public String plate;
+    public String entrydate;
+    public int cylinder;
 
     public VehicleAsynckTaskParams(String plate, String entrydate, int cylinder) {
         this.plate = plate;
