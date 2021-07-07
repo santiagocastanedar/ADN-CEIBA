@@ -45,6 +45,12 @@ pipeline {
       }
     }
 
+    stage('Compile & Integration Tests') {
+      steps{
+        echo "------------>Compile & Integration test<------------"
+      }
+    }
+
     stage('Static Code Analysis') {
       steps{
         echo '------------>Análisis de código estático<------------'

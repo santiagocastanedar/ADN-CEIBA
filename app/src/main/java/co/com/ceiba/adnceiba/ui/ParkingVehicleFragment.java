@@ -57,11 +57,11 @@ public class ParkingVehicleFragment extends Fragment {
 
                 String plate = binding.editTextPlate.getText().toString();
 
-                if(binding.radioCar.isChecked()){
+                if(binding.radioButtonCar.isChecked()){
                     parkingLotCarViewModel.executeSaveCar(plate,entryDate).observe(getViewLifecycleOwner(),carSaved -> {
                         Toast.makeText(getContext(), carSaved, Toast.LENGTH_LONG).show();
                     });
-                }else if(binding.radioMotorcycle.isChecked()){
+                }else if(binding.radioButtonMotorcycle.isChecked()){
                     int cylinder = Integer.parseInt(binding.editTextCylinder.getText().toString());
                     parkingLotMotorcycleViewModel.executeSaveMotorcycle(plate,entryDate,cylinder).observe(getViewLifecycleOwner(),motorcycleSaved ->{
                         Toast.makeText(getContext(), motorcycleSaved, Toast.LENGTH_LONG).show();
@@ -86,7 +86,7 @@ public class ParkingVehicleFragment extends Fragment {
         binding.radioGroupTypeVehicle.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if(binding.radioMotorcycle.isChecked()){
+                if(binding.radioButtonMotorcycle.isChecked()){
                     binding.editTextCylinder.setVisibility(View.VISIBLE);
                 }else{
                     binding.editTextCylinder.setVisibility(View.GONE);

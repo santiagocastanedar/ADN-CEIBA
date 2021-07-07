@@ -22,7 +22,6 @@ import co.com.ceiba.adnceiba.R;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static java.util.regex.Pattern.matches;
@@ -61,5 +60,6 @@ public class VehiclesListFragmentTest {
         onView(ViewMatchers.withId(R.id.recyclerViewVehicles))
                 .perform(RecyclerViewActions
                 .actionOnItemAtPosition(0,clickChildViewWithId(R.id.buttonPay)));
+        //onView(withText("El total a pagar por el vehiculo es")).check(matches(isDisplayed()));
     }
 }

@@ -62,12 +62,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:id="@+id/radioCar"
+                    android:id="@+id/radioButtonCar"
                     android:text="Carro"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/radioMotorcycle"
+                    android:id="@+id/radioButtonMotorcycle"
                     android:text="Moto"/>
             </RadioGroup>
 
