@@ -49,7 +49,7 @@ pipeline {
       steps{
         echo "------------>Compile & Integration test<------------"
         sh './gradlew clean'
-        sh './gradlew test'
+        sh './gradlew connectedAndroidTest'
       }
     }
 
