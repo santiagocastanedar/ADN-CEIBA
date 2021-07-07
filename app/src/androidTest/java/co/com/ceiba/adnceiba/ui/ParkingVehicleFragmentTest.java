@@ -41,7 +41,7 @@ public class ParkingVehicleFragmentTest {
     public void saveCarTest(){
         onView(withId(R.id.buttonAddVehicle)).perform(click());
         onView(withId(R.id.editTextPlate)).perform(typeText("FGU249"),closeSoftKeyboard());
-        onView(withId(R.id.radioCar)).perform(click());
+        onView(withId(R.id.radioButtonCar)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).
                 perform(PickerActions.setDate(2021, 05, 07));
         onView(withId(R.id.buttonCreateVehicle)).perform(click());
@@ -51,7 +51,7 @@ public class ParkingVehicleFragmentTest {
     public void saveMotorcycleTest(){
         onView(withId(R.id.buttonAddVehicle)).perform(click());
         onView(withId(R.id.editTextPlate)).perform(typeText("FGU567"));
-        onView(withId(R.id.radioMotorcycle)).perform(click());
+        onView(withId(R.id.radioButtonMotorcycle)).perform(click());
         onView(withId(R.id.editTextCylinder)).perform(typeText(""));
         onView(withId(R.id.editTextCylinder)).perform(typeText("750"),closeSoftKeyboard());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).
