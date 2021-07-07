@@ -13,10 +13,12 @@ import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 
 import org.hamcrest.Matchers;
+import org.junit.FixMethodOrder;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+import org.junit.runners.MethodSorters;
 
 import co.com.ceiba.adnceiba.R;
 
@@ -38,6 +40,7 @@ import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.*;
 
 @LargeTest
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(AndroidJUnit4.class)
 public class ParkingVehicleFragmentTest {
 
@@ -46,9 +49,9 @@ public class ParkingVehicleFragmentTest {
     public ActivityTestRule<MainMenuActivity> mActivityTestRule = new ActivityTestRule<>(MainMenuActivity.class);
 
     @Test
-    public void saveCar_correctInformation_true(){
+    public void A_saveCar_correctInformation_true(){
         onView(withId(R.id.buttonAddVehicle)).perform(click());
-        onView(withId(R.id.editTextPlate)).perform(typeText("123456"),closeSoftKeyboard());
+        onView(withId(R.id.editTextPlate)).perform(typeText("FGJ230"),closeSoftKeyboard());
         onView(withId(R.id.radioButtonCar)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).
                 perform(PickerActions.setDate(2021, 05, 07));
@@ -57,9 +60,9 @@ public class ParkingVehicleFragmentTest {
     }
 
     @Test
-    public void saveCar_samePlate_true(){
+    public void B_saveCar_samePlate_true(){
         onView(withId(R.id.buttonAddVehicle)).perform(click());
-        onView(withId(R.id.editTextPlate)).perform(typeText("123456"),closeSoftKeyboard());
+        onView(withId(R.id.editTextPlate)).perform(typeText("FGJ230"),closeSoftKeyboard());
         onView(withId(R.id.radioButtonCar)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).
                 perform(PickerActions.setDate(2021, 05, 07));
@@ -68,7 +71,7 @@ public class ParkingVehicleFragmentTest {
     }
 
     @Test
-    public void saveCar_incorrectInformation_true(){
+    public void C_saveCar_incorrectInformation_true(){
         onView(withId(R.id.buttonAddVehicle)).perform(click());
         onView(withId(R.id.editTextPlate)).perform(typeText(""),closeSoftKeyboard());
         onView(withId(R.id.radioButtonCar)).perform(click());
@@ -79,9 +82,9 @@ public class ParkingVehicleFragmentTest {
     }
 
     @Test
-    public void saveMotorcycle_correctInformation_true(){
+    public void D_saveMotorcycle_correctInformation_true(){
         onView(withId(R.id.buttonAddVehicle)).perform(click());
-        onView(withId(R.id.editTextPlate)).perform(typeText("987654"));
+        onView(withId(R.id.editTextPlate)).perform(typeText("DFG456"));
         onView(withId(R.id.radioButtonMotorcycle)).perform(click());
         onView(withId(R.id.editTextCylinder)).perform(typeText(""));
         onView(withId(R.id.editTextCylinder)).perform(typeText("750"),closeSoftKeyboard());
@@ -92,9 +95,9 @@ public class ParkingVehicleFragmentTest {
     }
 
     @Test
-    public void saveMotorcycle_samePlate_true(){
+    public void E_saveMotorcycle_samePlate_true(){
         onView(withId(R.id.buttonAddVehicle)).perform(click());
-        onView(withId(R.id.editTextPlate)).perform(typeText("987654"));
+        onView(withId(R.id.editTextPlate)).perform(typeText("DFG456"));
         onView(withId(R.id.radioButtonMotorcycle)).perform(click());
         onView(withId(R.id.editTextCylinder)).perform(typeText(""));
         onView(withId(R.id.editTextCylinder)).perform(typeText("750"),closeSoftKeyboard());
