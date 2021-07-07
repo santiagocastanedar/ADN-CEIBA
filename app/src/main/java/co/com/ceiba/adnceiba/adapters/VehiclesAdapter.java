@@ -46,7 +46,7 @@ public class VehiclesAdapter extends RecyclerView.Adapter<VehiclesAdapter.ViewHo
         holder.btnPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vehicleView.onClickPost(vehicleArrayList.get(position));
+                vehicleView.onClickPay(vehicleArrayList.get(position));
             }
         });
     }

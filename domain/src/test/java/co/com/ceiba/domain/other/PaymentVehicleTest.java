@@ -24,15 +24,14 @@ public class PaymentVehicleTest {
     double rateDayCar = RATE_CAR_PER_DAY;
     double rateDayMotorcycle = RATE_MOTORCYCLE_PER_DAY;
     double rateHourMotorcycle = RATE_MOTORCYCLE_PER_HOUR;
-
-
+    
     @Before
     public void setUp() throws Exception {
         paymentVehicle = new PaymentVehicle();
     }
 
     @Test
-    public void calculatePaymentCarMoreOneDay() {
+    public void calculatePaymentCar_MoreOneDay_true() {
         //Arrange
         car.setDepartureDate("2021-06-29 10:00");
         double totalPaymentExpected = 11000;
@@ -43,7 +42,7 @@ public class PaymentVehicleTest {
     }
 
     @Test
-    public void calculatePaymentCarOneDay() {
+    public void calculatePaymentCar_OneDay_true() {
         //Arrange
         car.setDepartureDate("2021-06-29 5:00");
         double totalPaymentExpected = 8000;
@@ -54,7 +53,7 @@ public class PaymentVehicleTest {
     }
 
     @Test
-    public void calculatePaymentCarHours() {
+    public void calculatePaymentCar_Hours_true() {
         //Arrange
         car.setDepartureDate("2021-06-28 10:00");
         double totalPaymentExpected = 3000;
@@ -65,7 +64,7 @@ public class PaymentVehicleTest {
     }
 
     @Test
-    public void calculatePaymentMotorcycleMoreOneDay() {
+    public void calculatePaymentMotorcycle_MoreOneDay_true() {
         //Arrange
         motorcycle.setDepartureDate("2021-06-29 10:00");
         double totalPaymentExpected = 5500;
@@ -76,7 +75,7 @@ public class PaymentVehicleTest {
     }
 
     @Test
-    public void calculatePaymentMotorcycleOneDay() {
+    public void calculatePaymentMotorcycle_OneDay_true() {
         //Arrange
         motorcycle.setDepartureDate("2021-06-29 5:00");
         double totalPaymentExpected = 4000;
@@ -87,7 +86,7 @@ public class PaymentVehicleTest {
     }
 
     @Test
-    public void calculatePaymentMotorcylceHours() {
+    public void calculatePaymentMotorcylce_Hours_true() {
         //Arrange
         motorcycle.setDepartureDate("2021-06-28 10:00");
         double totalPaymentExpected = 1500;
@@ -119,7 +118,7 @@ public class PaymentVehicleTest {
     }
 
     @Test
-    public void calculateTimeInParkingLot() {
+    public void calculateTimeInParkingLot_correctDate_true() {
         //Arrange
         String departureDate = ("2021-06-29 10:00");
         long timeExcpected = 27;
@@ -130,7 +129,7 @@ public class PaymentVehicleTest {
     }
 
     @Test
-    public void calculateTimeInParkingLotWrongDate() {
+    public void calculateTimeInParkingLot_WrongDate_Exception() {
         //Arrange
         String entryDate = ("");
         String departureDate = ("");

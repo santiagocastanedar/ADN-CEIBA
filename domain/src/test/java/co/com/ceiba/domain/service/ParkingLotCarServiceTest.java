@@ -38,7 +38,7 @@ public class ParkingLotCarServiceTest {
     }
 
     @Test
-    public void vehiclePlateRestriction() {
+    public void vehiclePlateRestriction_startWithA_Exception() {
         //Arrange
         String entryDate = ("2021-07-06 7:00");
         String expectedMessage = "La placa ingresada no tiene permitido ingresar este dia";

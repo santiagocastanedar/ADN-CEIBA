@@ -1,11 +1,13 @@
 package co.com.ceiba.adnceiba.ui;
 
+import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -36,6 +38,7 @@ public class ParkingVehicleFragment extends Fragment {
     private ParkingLotMotorcycleViewModel parkingLotMotorcycleViewModel;
     private FragmentParkingVehicleBinding binding;
     private String entryDate;
+    private AlertDialog.Builder builder;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,15 +62,21 @@ public class ParkingVehicleFragment extends Fragment {
 
                 if(binding.radioButtonCar.isChecked()){
                     parkingLotCarViewModel.executeSaveCar(plate,entryDate).observe(getViewLifecycleOwner(),carSaved -> {
-                        Toast.makeText(getContext(), carSaved, Toast.LENGTH_LONG).show();
+                        builder.setMessage(carSaved);
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
                     });
                 }else if(binding.radioButtonMotorcycle.isChecked()){
                     int cylinder = Integer.parseInt(binding.editTextCylinder.getText().toString());
                     parkingLotMotorcycleViewModel.executeSaveMotorcycle(plate,entryDate,cylinder).observe(getViewLifecycleOwner(),motorcycleSaved ->{
-                        Toast.makeText(getContext(), motorcycleSaved, Toast.LENGTH_LONG).show();
+                        builder.setMessage(motorcycleSaved);
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
                     });
                 }else{
-                    Toast.makeText(getContext(), "Debe seleccionar el tipo de vehiculo.", Toast.LENGTH_LONG).show();
+                    builder.setMessage("Debe seleccionar el tipo de vehiculo.");
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
                 }
                 binding.editTextPlate.setText("");
                 binding.editTextCylinder.setText("");
@@ -99,5 +108,11 @@ public class ParkingVehicleFragment extends Fragment {
         parkingLotMotorcycleViewModel =  new ViewModelProvider(requireActivity()).get(ParkingLotMotorcycleViewModel.class);
         parkingLotCarViewModel = new ViewModelProvider(requireActivity()).get(ParkingLotCarViewModel.class);
         binding.calendarEntryDate.setMaxDate(System.currentTimeMillis());
+        builder = new AlertDialog.Builder(getActivity());
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
     }
 }

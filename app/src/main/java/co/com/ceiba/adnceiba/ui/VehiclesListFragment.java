@@ -71,7 +71,7 @@ public class VehiclesListFragment extends Fragment implements VehicleView{
     }
 
     @Override
-    public void onClickPost(Vehicle vehicle) {
+    public void onClickPay(Vehicle vehicle) {
         double total = paymentAplication.calculatePayment(vehicle);
         builder.setPositiveButton(R.string.pay, new DialogInterface.OnClickListener() {
             @Override

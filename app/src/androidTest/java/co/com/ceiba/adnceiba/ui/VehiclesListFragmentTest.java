@@ -21,10 +21,14 @@ import co.com.ceiba.adnceiba.R;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.matcher.RootMatchers.isDialog;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static java.util.regex.Pattern.matches;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static org.hamcrest.CoreMatchers.endsWith;
+import static org.hamcrest.CoreMatchers.startsWith;
 import static org.junit.Assert.*;
 
 @LargeTest
@@ -55,11 +59,13 @@ public class VehiclesListFragmentTest {
     public ActivityScenarioRule<MainMenuActivity> mActivityTestRule = new ActivityScenarioRule<>(MainMenuActivity.class);
 
     @Test
-    public void pay(){
+    public void pay_corectClcik_true(){
         onView(withId(R.id.buttonViewVehicle)).perform(click());
         onView(ViewMatchers.withId(R.id.recyclerViewVehicles))
                 .perform(RecyclerViewActions
                 .actionOnItemAtPosition(0,clickChildViewWithId(R.id.buttonPay)));
-        //onView(withText("El total a pagar por el vehiculo es")).check(matches(isDisplayed()));
+        onView(withText(startsWith("El total a pagar por el vehiculo es")))
+                .inRoot(isDialog()).check(matches(isDisplayed()));
+        onView(withText(R.string.pay)).perform(click());
     }
 }

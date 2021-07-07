@@ -25,8 +25,16 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.action.ViewActions.typeText;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.RootMatchers.isDialog;
+import static androidx.test.espresso.matcher.RootMatchers.isFocusable;
+import static androidx.test.espresso.matcher.RootMatchers.withDecorView;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.*;
 
 @LargeTest
@@ -35,28 +43,64 @@ public class ParkingVehicleFragmentTest {
 
 
     @Rule
-    public ActivityScenarioRule<MainMenuActivity> mActivityTestRule = new ActivityScenarioRule<>(MainMenuActivity.class);
+    public ActivityTestRule<MainMenuActivity> mActivityTestRule = new ActivityTestRule<>(MainMenuActivity.class);
 
     @Test
-    public void saveCarTest(){
+    public void saveCar_correctInformation_true(){
         onView(withId(R.id.buttonAddVehicle)).perform(click());
-        onView(withId(R.id.editTextPlate)).perform(typeText("FGU249"),closeSoftKeyboard());
+        onView(withId(R.id.editTextPlate)).perform(typeText("123456"),closeSoftKeyboard());
         onView(withId(R.id.radioButtonCar)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).
                 perform(PickerActions.setDate(2021, 05, 07));
-        onView(withId(R.id.buttonCreateVehicle)).perform(click());
+        onView(withId(R.id.buttonCreateVehicle)).perform(scrollTo(),click());
+        onView(withText(R.string.addCar)).inRoot(isDialog()).check(matches(isDisplayed()));
     }
 
     @Test
-    public void saveMotorcycleTest(){
+    public void saveCar_samePlate_true(){
         onView(withId(R.id.buttonAddVehicle)).perform(click());
-        onView(withId(R.id.editTextPlate)).perform(typeText("FGU567"));
+        onView(withId(R.id.editTextPlate)).perform(typeText("123456"),closeSoftKeyboard());
+        onView(withId(R.id.radioButtonCar)).perform(click());
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).
+                perform(PickerActions.setDate(2021, 05, 07));
+        onView(withId(R.id.buttonCreateVehicle)).perform(scrollTo(),click());
+        onView(withText(R.string.vehicleExist)).inRoot(isDialog()).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void saveCar_incorrectInformation_true(){
+        onView(withId(R.id.buttonAddVehicle)).perform(click());
+        onView(withId(R.id.editTextPlate)).perform(typeText(""),closeSoftKeyboard());
+        onView(withId(R.id.radioButtonCar)).perform(click());
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).
+                perform(PickerActions.setDate(2021, 05, 07));
+        onView(withId(R.id.buttonCreateVehicle)).perform(scrollTo(),click());
+        onView(withText(R.string.incorrectPlate)).inRoot(isDialog()).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void saveMotorcycle_correctInformation_true(){
+        onView(withId(R.id.buttonAddVehicle)).perform(click());
+        onView(withId(R.id.editTextPlate)).perform(typeText("987654"));
         onView(withId(R.id.radioButtonMotorcycle)).perform(click());
         onView(withId(R.id.editTextCylinder)).perform(typeText(""));
         onView(withId(R.id.editTextCylinder)).perform(typeText("750"),closeSoftKeyboard());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).
                 perform(PickerActions.setDate(2021, 07, 04));
-        onView(withId(R.id.buttonCreateVehicle)).perform(click()).perform(scrollTo());
+        onView(withId(R.id.buttonCreateVehicle)).perform(scrollTo(),click());
+        onView(withText(R.string.addMotorcycle)).inRoot(isDialog()).check(matches(isDisplayed()));
     }
 
+    @Test
+    public void saveMotorcycle_samePlate_true(){
+        onView(withId(R.id.buttonAddVehicle)).perform(click());
+        onView(withId(R.id.editTextPlate)).perform(typeText("987654"));
+        onView(withId(R.id.radioButtonMotorcycle)).perform(click());
+        onView(withId(R.id.editTextCylinder)).perform(typeText(""));
+        onView(withId(R.id.editTextCylinder)).perform(typeText("750"),closeSoftKeyboard());
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).
+                perform(PickerActions.setDate(2021, 07, 04));
+        onView(withId(R.id.buttonCreateVehicle)).perform(scrollTo(),click());
+        onView(withText(R.string.vehicleExist)).inRoot(isDialog()).check(matches(isDisplayed()));
+    }
 }

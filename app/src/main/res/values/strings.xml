@@ -4,4 +4,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="pay">Pagar</string>
     <string name="cancel">Cancelar</string>
+    <string name="addCar">Carro ingresado con exito.</string>
+    <string name="addMotorcycle">Moto ingresada con exito.</string>
+    <string name="vehicleExist">El vehiculo ya se encuentra parqueado</string>
+    <string name="incorrectPlate">La placa ingresada no es valida.</string>
 </resources>

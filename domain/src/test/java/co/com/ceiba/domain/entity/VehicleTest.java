@@ -18,7 +18,7 @@ public class VehicleTest {
     String date = dateFormat.format(new Date());
 
     @Test
-    public void VehicleCorrectInformation(){
+    public void saveVehicle_CorrectInformation_true(){
         //Arrange
         String plate = "FGU249";
         //Act
@@ -28,7 +28,7 @@ public class VehicleTest {
     }
 
     @Test
-    public void VehicleInCorrectPlate(){
+    public void saveVehicle_InCorrectPlate_Exception(){
         //Arrange
         String plate = "FGU";
         String expectedMessage = "La placa ingresada no es valida.";
@@ -44,7 +44,7 @@ public class VehicleTest {
 
     }
     @Test
-    public void EntryDateCorrect(){
+    public void setEntryDate_Correct_true(){
         //Arrange
         String plate = "FGU249";
         SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT_PAYMENT);
@@ -58,7 +58,7 @@ public class VehicleTest {
     }
 
     @Test
-    public void EntryDateInCorrect(){
+    public void setEntryDate_InCorrect_Exception(){
         //Arrange
         String plate = "FGU249";
         String expectedMessage = "La fecha de entrada o de salida son incorrectas.";
@@ -73,7 +73,7 @@ public class VehicleTest {
     }
 
     @Test
-    public void getTypeCar(){
+    public void getTypeCar_correctType_true(){
         //Arrange
         String plate = "FGU249";
         String typeExpected = CAR;
@@ -86,7 +86,7 @@ public class VehicleTest {
     }
 
     @Test
-    public void getTypeMotorcycle(){
+    public void getTypeMotorcycle_correctType_true(){
         //Arrange
         String plate = "FGU249";
         String typeExpected = MOTORCYCLE;

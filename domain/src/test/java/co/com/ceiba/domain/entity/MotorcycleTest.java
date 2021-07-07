@@ -16,7 +16,7 @@ public class MotorcycleTest {
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
     String date = dateFormat.format(new Date());
     @Test
-    public void setIncorrectCylinder() {
+    public void setCylinder_incorrectCylinder_Exception() {
         //Arrange
 
         String plate = "FGU249";
@@ -32,7 +32,7 @@ public class MotorcycleTest {
         }
     }
     @Test
-    public void setCorrectCylinder() {
+    public void setCylinder_correctCylinder_true() {
         //Arrange
         String plate = "FGU249";
 
