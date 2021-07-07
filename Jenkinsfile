@@ -48,6 +48,8 @@ pipeline {
     stage('Compile & Integration Tests') {
       steps{
         echo "------------>Compile & Integration test<------------"
+        sh './gradlew clean'
+        sh './gradlew test'
       }
     }
 
