@@ -17,13 +17,9 @@ public interface CarDao {
     @Query("SELECT COUNT(*) FROM cars")
     int getCarQuantity();
 
-    @Query("SELECT * FROM cars WHERE departureDate IS NULL")
+    @Query("SELECT * FROM cars WHERE departureDate IS NULL ORDER BY entryDate")
     List<CarRoom> getCars();
-
-    @Query("UPDATE cars SET departureDate = :departureDate WHERE plate = :plate AND departureDate IS NULL")
-    public void updateDepartureDate(String departureDate,String plate);
 
     @Insert
     void insertCar(CarRoom carRoom);
-
 }

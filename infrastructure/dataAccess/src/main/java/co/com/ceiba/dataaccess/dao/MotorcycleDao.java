@@ -14,8 +14,7 @@ public interface MotorcycleDao {
     @Query("SELECT * FROM motorcycles WHERE plate IN (:plate) AND departureDate IS NULL")
     MotorcycleRoom getMotorcycle(String plate);
 
-
-    @Query("SELECT * FROM motorcycles WHERE departureDate IS NULL")
+    @Query("SELECT * FROM motorcycles WHERE departureDate IS NULL ORDER BY entryDate")
     List<MotorcycleRoom> getMotorcycles();
 
     @Query("SELECT COUNT(*) FROM motorcycles ")
@@ -23,7 +22,4 @@ public interface MotorcycleDao {
 
     @Insert
     void insertVehicle(MotorcycleRoom motorcycleRoom);
-
-    @Update
-    public void updateDepartureDate(MotorcycleRoom motorcycleRoom);
 }

@@ -8,4 +8,5 @@
     <string name="addMotorcycle">Moto ingresada con exito.</string>
     <string name="vehicleExist">El vehiculo ya se encuentra parqueado</string>
     <string name="incorrectPlate">La placa ingresada no es valida.</string>
+    <string name="plateWithA">La placa ingresada no tiene permitido ingresar este dia</string>
 </resources>

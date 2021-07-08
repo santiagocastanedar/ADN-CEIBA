@@ -19,6 +19,7 @@ import static co.com.ceiba.domain.utils.Constant.SUNDAY_PERMIT;
 public class ParkingLotCarService {
 
     private final ParkingLotCarRepository parkingLotCarRepository;
+
     @Inject
     public ParkingLotCarService(ParkingLotCarRepository parkingLotCarRepository){
         this.parkingLotCarRepository = parkingLotCarRepository;

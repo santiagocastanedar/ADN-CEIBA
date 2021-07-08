@@ -51,7 +51,7 @@ public class ParkingVehicleFragmentTest {
     @Test
     public void A_saveCar_correctInformation_true(){
         onView(withId(R.id.buttonAddVehicle)).perform(click());
-        onView(withId(R.id.editTextPlate)).perform(typeText("FGJ230"),closeSoftKeyboard());
+        onView(withId(R.id.editTextPlate)).perform(typeText("FGH789"),closeSoftKeyboard());
         onView(withId(R.id.radioButtonCar)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).
                 perform(PickerActions.setDate(2021, 05, 07));
@@ -60,9 +60,9 @@ public class ParkingVehicleFragmentTest {
     }
 
     @Test
-    public void B_saveCar_samePlate_true(){
+    public void B_saveCar_samePlate_Exception(){
         onView(withId(R.id.buttonAddVehicle)).perform(click());
-        onView(withId(R.id.editTextPlate)).perform(typeText("FGJ230"),closeSoftKeyboard());
+        onView(withId(R.id.editTextPlate)).perform(typeText("FGH789"),closeSoftKeyboard());
         onView(withId(R.id.radioButtonCar)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).
                 perform(PickerActions.setDate(2021, 05, 07));
@@ -71,9 +71,9 @@ public class ParkingVehicleFragmentTest {
     }
 
     @Test
-    public void C_saveCar_incorrectInformation_true(){
+    public void C_saveCar_incorrectInformation_Exception(){
         onView(withId(R.id.buttonAddVehicle)).perform(click());
-        onView(withId(R.id.editTextPlate)).perform(typeText(""),closeSoftKeyboard());
+        onView(withId(R.id.editTextPlate)).perform(typeText("123"),closeSoftKeyboard());
         onView(withId(R.id.radioButtonCar)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).
                 perform(PickerActions.setDate(2021, 05, 07));
@@ -84,7 +84,7 @@ public class ParkingVehicleFragmentTest {
     @Test
     public void D_saveMotorcycle_correctInformation_true(){
         onView(withId(R.id.buttonAddVehicle)).perform(click());
-        onView(withId(R.id.editTextPlate)).perform(typeText("DFG456"));
+        onView(withId(R.id.editTextPlate)).perform(typeText("DFGL09"));
         onView(withId(R.id.radioButtonMotorcycle)).perform(click());
         onView(withId(R.id.editTextCylinder)).perform(typeText(""));
         onView(withId(R.id.editTextCylinder)).perform(typeText("750"),closeSoftKeyboard());
@@ -95,9 +95,9 @@ public class ParkingVehicleFragmentTest {
     }
 
     @Test
-    public void E_saveMotorcycle_samePlate_true(){
+    public void E_saveMotorcycle_samePlate_Expection(){
         onView(withId(R.id.buttonAddVehicle)).perform(click());
-        onView(withId(R.id.editTextPlate)).perform(typeText("DFG456"));
+        onView(withId(R.id.editTextPlate)).perform(typeText("DFGL09"));
         onView(withId(R.id.radioButtonMotorcycle)).perform(click());
         onView(withId(R.id.editTextCylinder)).perform(typeText(""));
         onView(withId(R.id.editTextCylinder)).perform(typeText("750"),closeSoftKeyboard());
@@ -105,5 +105,18 @@ public class ParkingVehicleFragmentTest {
                 perform(PickerActions.setDate(2021, 07, 04));
         onView(withId(R.id.buttonCreateVehicle)).perform(scrollTo(),click());
         onView(withText(R.string.vehicleExist)).inRoot(isDialog()).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void F_saveMotorcycle_plateWithA_Exception(){
+        onView(withId(R.id.buttonAddVehicle)).perform(click());
+        onView(withId(R.id.editTextPlate)).perform(typeText("AFG456"));
+        onView(withId(R.id.radioButtonMotorcycle)).perform(click());
+        onView(withId(R.id.editTextCylinder)).perform(typeText(""));
+        onView(withId(R.id.editTextCylinder)).perform(typeText("750"),closeSoftKeyboard());
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).
+                perform(PickerActions.setDate(2021, 07, 07));
+        onView(withId(R.id.buttonCreateVehicle)).perform(scrollTo(),click());
+        onView(withText(R.string.plateWithA)).inRoot(isDialog()).check(matches(isDisplayed()));
     }
 }

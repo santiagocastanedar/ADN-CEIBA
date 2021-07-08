@@ -20,7 +20,6 @@ public class MotorcycleRoom {
     @ColumnInfo(name="departureDate")
     public String departureDate;
 
-
     public MotorcycleRoom(@NonNull String plate, int cylinder, String entryDate) {
         this.plate = plate;
         this.cylinder = cylinder;

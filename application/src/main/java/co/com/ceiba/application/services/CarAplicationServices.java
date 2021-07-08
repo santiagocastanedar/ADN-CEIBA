@@ -32,5 +32,4 @@ public class CarAplicationServices {
     public List<Car> getCars(){
         return parkingLotCarService.getCars();
     }
-
 }
