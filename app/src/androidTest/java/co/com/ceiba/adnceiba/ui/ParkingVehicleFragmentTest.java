@@ -46,7 +46,7 @@ public class ParkingVehicleFragmentTest {
 
 
     @Rule
-    public ActivityTestRule<MainMenuActivity> mActivityTestRule = new ActivityTestRule<>(MainMenuActivity.class);
+    public ActivityScenarioRule<MainMenuActivity> mActivityTestRule = new ActivityScenarioRule<>(MainMenuActivity.class);
 
     @Test
     public void A_saveCar_correctInformation_true(){

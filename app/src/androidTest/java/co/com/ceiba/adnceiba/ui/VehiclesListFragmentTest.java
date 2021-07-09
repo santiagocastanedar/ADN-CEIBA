@@ -57,7 +57,7 @@ public class VehiclesListFragmentTest {
     }
 
     @Rule
-    public ActivityTestRule<MainMenuActivity> mActivityTestRule = new ActivityTestRule<>(MainMenuActivity.class);
+    public ActivityScenarioRule<MainMenuActivity> mActivityTestRule = new ActivityScenarioRule<>(MainMenuActivity.class);
 
     @Test
     public void pay_corectClcik_true(){
