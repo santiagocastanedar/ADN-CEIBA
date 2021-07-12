@@ -20,17 +20,19 @@ import static co.com.ceiba.domain.utils.Constant.SUNDAY_PERMIT;
 public class ParkingLotVehicleService {
 
     private final ParkingLotVehicleRepository parkingLotVehicleRepository;
+    private final VehicleCapacityService vehicleCapacityService;
 
     @Inject
-    public ParkingLotVehicleService(ParkingLotVehicleRepository parkingLotVehicleRepository){
+    public ParkingLotVehicleService(ParkingLotVehicleRepository parkingLotVehicleRepository,VehicleCapacityService vehicleCapacityService){
         this.parkingLotVehicleRepository = parkingLotVehicleRepository;
+        this.vehicleCapacityService = vehicleCapacityService;
     }
 
     public void saveVehicle(Vehicle vehicle) throws ParseException {
         if(parkingLotVehicleRepository.VehicleExist(vehicle.getPlate()) != null){
             throw new VehicleAlreadyExistsException();
         }
-        if(getQuantity() >= MAX_QUANTITY_CAR){
+        if(vehicleCapacityService.validateCapacity(getQuantity())){
             throw new MaxCapacityException();
         }
         validateEntryPlate(vehicle.getPlate(),vehicle.getEntryDate());

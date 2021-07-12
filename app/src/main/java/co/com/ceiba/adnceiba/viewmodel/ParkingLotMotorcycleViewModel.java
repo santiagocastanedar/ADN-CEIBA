@@ -18,6 +18,7 @@ import co.com.ceiba.dataaccess.AppDatabase;
 import co.com.ceiba.dataaccess.repository.ParkingLotMotorcycleRepositoryImpl;
 import co.com.ceiba.domain.entity.Motorcycle;
 import co.com.ceiba.domain.entity.Vehicle;
+import co.com.ceiba.domain.service.MotorcycleCapacityServideImpl;
 import co.com.ceiba.domain.service.ParkingLotVehicleService;
 import dagger.hilt.android.lifecycle.HiltViewModel;
 
@@ -32,7 +33,8 @@ public class ParkingLotMotorcycleViewModel extends ViewModel {
 
     @Inject
     public ParkingLotMotorcycleViewModel(AppDatabase appDatabase){
-        this.parkingLotVehicleService = new ParkingLotVehicleService(new ParkingLotMotorcycleRepositoryImpl(appDatabase));
+        this.parkingLotVehicleService = new ParkingLotVehicleService(new ParkingLotMotorcycleRepositoryImpl(appDatabase)
+                ,new MotorcycleCapacityServideImpl());
         this.motorcycleApplicationService =  new MotorcycleApplicationService(parkingLotVehicleService);
     }
 
