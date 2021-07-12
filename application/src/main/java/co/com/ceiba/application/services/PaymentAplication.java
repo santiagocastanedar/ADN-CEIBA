@@ -3,11 +3,9 @@ package co.com.ceiba.application.services;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.inject.Inject;
-
 import co.com.ceiba.domain.entity.Motorcycle;
 import co.com.ceiba.domain.entity.Vehicle;
-import co.com.ceiba.domain.other.PaymentVehicle;
+import co.com.ceiba.domain.service.PaymentVehicleService;
 
 import static co.com.ceiba.domain.utils.Constant.CAR;
 import static co.com.ceiba.domain.utils.Constant.DATE_FORMAT_PAYMENT;
@@ -18,7 +16,7 @@ import static co.com.ceiba.domain.utils.Constant.RATE_MOTORCYCLE_PER_HOUR;
 
 public class PaymentAplication {
 
-    private PaymentVehicle paymentVehicle = new PaymentVehicle();
+    private PaymentVehicleService paymentVehicleService = new PaymentVehicleService();
 
     public PaymentAplication(){
     }
@@ -29,11 +27,11 @@ public class PaymentAplication {
         String departureDate = dateFormat.format(new Date());
         vehicle.setDepartureDate(departureDate);
         if (vehicle.getType() == CAR){
-            total = paymentVehicle.calculatePaymentVehicle(vehicle,RATE_CAR_PER_HOUR,RATE_CAR_PER_DAY);
+            total = paymentVehicleService.calculatePaymentVehicle(vehicle,RATE_CAR_PER_HOUR,RATE_CAR_PER_DAY);
         }else{
             Motorcycle motorcycle = (Motorcycle) vehicle;
-            total = paymentVehicle.calculatePaymentVehicle(motorcycle,RATE_MOTORCYCLE_PER_HOUR,RATE_MOTORCYCLE_PER_DAY) +
-                    paymentVehicle.calculateExtraPayment(motorcycle);
+            total = paymentVehicleService.calculatePaymentVehicle(motorcycle,RATE_MOTORCYCLE_PER_HOUR,RATE_MOTORCYCLE_PER_DAY) +
+                    paymentVehicleService.calculateExtraPayment(motorcycle);
         }
         return total;
     }

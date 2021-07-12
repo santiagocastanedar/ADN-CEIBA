@@ -1,4 +1,4 @@
-package co.com.ceiba.domain.other;
+package co.com.ceiba.domain.service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,7 +15,7 @@ import static co.com.ceiba.domain.utils.Constant.MAX_CYLINDER_MOTORCYCLE;
 import static co.com.ceiba.domain.utils.Constant.STARTDAY;
 import static co.com.ceiba.domain.utils.Constant.TIME_TRANSFORM;
 
-public class PaymentVehicle {
+public class PaymentVehicleService {
 
     public double calculatePaymentVehicle(Vehicle vehicle,double rateHour,double rateDay) {
         int startDay = STARTDAY;
