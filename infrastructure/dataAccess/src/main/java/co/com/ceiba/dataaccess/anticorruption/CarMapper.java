@@ -9,7 +9,7 @@ import co.com.ceiba.domain.entity.Vehicle;
 
 public class CarMapper {
 
-    public CarRoom carToCarRoomMapper(Car car){
+    public CarRoom carToCarRoomMapper(Vehicle car){
         return new CarRoom(car.getPlate(),
                 car.getEntryDate());
     }
@@ -22,12 +22,11 @@ public class CarMapper {
         }
     }
     
-    public List<Car> listCarRoomToListCar(List<CarRoom> carRoomList){
-        List<Car> carList = new ArrayList<Car>();
+    public List<Vehicle> listCarRoomToListCar(List<CarRoom> carRoomList){
+        List<Vehicle> carList = new ArrayList<Vehicle>();
         for (CarRoom car:carRoomList) {
             carList.add(carRoomToCarMapper(car));
         }
-
         return carList;
     }
 }

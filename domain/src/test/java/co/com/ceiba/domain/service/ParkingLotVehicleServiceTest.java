@@ -11,26 +11,21 @@ import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 import co.com.ceiba.domain.entity.Car;
 import co.com.ceiba.domain.exception.RestPlateException;
-import co.com.ceiba.domain.exception.VehicleAlreadyExistsException;
-import co.com.ceiba.domain.repository.ParkingLotCarRepository;
+import co.com.ceiba.domain.repository.ParkingLotVehicleRepository;
 
-public class ParkingLotCarServiceTest {
+public class ParkingLotVehicleServiceTest {
 
     @Rule
     public MockitoRule mockitoRule = MockitoJUnit.rule();
 
     @Mock
-    private ParkingLotCarRepository parkingLotCarRepository;
+    private ParkingLotVehicleRepository parkingLotVehicleRepository;
 
     @InjectMocks
-    ParkingLotCarService parkingLotCarService;
+    ParkingLotVehicleService parkingLotVehicleService;
 
     @Before
     public void init(){
@@ -46,7 +41,7 @@ public class ParkingLotCarServiceTest {
 
         try {
             //Act
-            parkingLotCarService.saveVehicle(car);
+            parkingLotVehicleService.saveVehicle(car);
             Assert.fail();
         }catch (RestPlateException | ParseException ex){
             //Assert

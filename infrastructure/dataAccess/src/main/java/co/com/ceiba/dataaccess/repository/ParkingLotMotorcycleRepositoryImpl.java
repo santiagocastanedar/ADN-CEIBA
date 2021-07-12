@@ -7,9 +7,10 @@ import javax.inject.Inject;
 import co.com.ceiba.dataaccess.AppDatabase;
 import co.com.ceiba.dataaccess.anticorruption.MotorcycleMapper;
 import co.com.ceiba.domain.entity.Motorcycle;
-import co.com.ceiba.domain.repository.ParkingLotMotorcycleRepository;
+import co.com.ceiba.domain.entity.Vehicle;
+import co.com.ceiba.domain.repository.ParkingLotVehicleRepository;
 
-public class ParkingLotMotorcycleRepositoryImpl implements ParkingLotMotorcycleRepository {
+public class ParkingLotMotorcycleRepositoryImpl implements ParkingLotVehicleRepository {
 
     private AppDatabase appDatabaseParkingLot;
 
@@ -20,14 +21,14 @@ public class ParkingLotMotorcycleRepositoryImpl implements ParkingLotMotorcycleR
 
 
     @Override
-    public Motorcycle motorcycleExist(String plate) {
-        return new MotorcycleMapper().motorcycleRoomToMotorcycleMapper(appDatabaseParkingLot.motorcycleDao().getMotorcycle(plate));
+    public Vehicle saveVehicle(Vehicle vehicle) {
+        appDatabaseParkingLot.motorcycleDao().insertVehicle(new MotorcycleMapper().motorcycleTomotorcycleRoomMapper((Motorcycle) vehicle));
+        return vehicle;
     }
 
     @Override
-    public void saveMotorcycle(Motorcycle motorcycle) {
-        appDatabaseParkingLot.motorcycleDao().insertVehicle(new MotorcycleMapper().motorcycleTomotorcycleRoomMapper(motorcycle));
-
+    public Vehicle VehicleExist(String plate) {
+        return new MotorcycleMapper().motorcycleRoomToMotorcycleMapper(appDatabaseParkingLot.motorcycleDao().getMotorcycle(plate));
     }
 
     @Override
@@ -36,7 +37,7 @@ public class ParkingLotMotorcycleRepositoryImpl implements ParkingLotMotorcycleR
     }
 
     @Override
-    public List<Motorcycle> getMotorcycle() {
+    public List<Vehicle> getVehicles() {
         return new MotorcycleMapper().listMotorcycleRoomToListMotorcycle(appDatabaseParkingLot.motorcycleDao().getMotorcycles());
     }
 }

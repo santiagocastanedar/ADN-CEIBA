@@ -5,43 +5,44 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import javax.inject.Inject;
-import co.com.ceiba.domain.entity.Car;
+
+import co.com.ceiba.domain.entity.Vehicle;
 import co.com.ceiba.domain.exception.MaxCapacityException;
 import co.com.ceiba.domain.exception.RestPlateException;
 import co.com.ceiba.domain.exception.VehicleAlreadyExistsException;
-import co.com.ceiba.domain.repository.ParkingLotCarRepository;
+import co.com.ceiba.domain.repository.ParkingLotVehicleRepository;
 import static co.com.ceiba.domain.utils.Constant.DATE_FORMAT_PAYMENT;
 import static co.com.ceiba.domain.utils.Constant.MAX_QUANTITY_CAR;
 import static co.com.ceiba.domain.utils.Constant.MONDAY_PERMIT;
 import static co.com.ceiba.domain.utils.Constant.PLATE_REST;
 import static co.com.ceiba.domain.utils.Constant.SUNDAY_PERMIT;
 
-public class ParkingLotCarService {
+public class ParkingLotVehicleService {
 
-    private final ParkingLotCarRepository parkingLotCarRepository;
+    private final ParkingLotVehicleRepository parkingLotVehicleRepository;
 
     @Inject
-    public ParkingLotCarService(ParkingLotCarRepository parkingLotCarRepository){
-        this.parkingLotCarRepository = parkingLotCarRepository;
+    public ParkingLotVehicleService(ParkingLotVehicleRepository parkingLotVehicleRepository){
+        this.parkingLotVehicleRepository = parkingLotVehicleRepository;
     }
 
-    public void saveVehicle(Car car) throws ParseException {
-        if(parkingLotCarRepository.getCar(car.getPlate()) != null){
+    public void saveVehicle(Vehicle vehicle) throws ParseException {
+        if(parkingLotVehicleRepository.VehicleExist(vehicle.getPlate()) != null){
             throw new VehicleAlreadyExistsException();
         }
         if(getQuantity() >= MAX_QUANTITY_CAR){
             throw new MaxCapacityException();
         }
-        validateEntryPlate(car.getPlate(),car.getEntryDate());
-        parkingLotCarRepository.saveVehicle(car);
+        validateEntryPlate(vehicle.getPlate(),vehicle.getEntryDate());
+        parkingLotVehicleRepository.saveVehicle(vehicle);
     }
 
-    public List<Car> getCars(){
-        return parkingLotCarRepository.getCars();
+    public List<Vehicle> getVehicles(){
+        return parkingLotVehicleRepository.getVehicles();
     }
 
     public int getQuantity(){
-        return parkingLotCarRepository.getQuantity();
+        return parkingLotVehicleRepository.getQuantity();
     }
 
     private void validateEntryPlate(String plate, String entryDate) throws ParseException {

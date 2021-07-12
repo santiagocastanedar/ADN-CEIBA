@@ -14,9 +14,6 @@ import java.text.ParseException;
 
 import co.com.ceiba.domain.entity.Motorcycle;
 import co.com.ceiba.domain.exception.RestPlateException;
-import co.com.ceiba.domain.repository.ParkingLotMotorcycleRepository;
-
-import static org.junit.Assert.*;
 
 public class ParkingLotMotorcycleServiceTest {
 

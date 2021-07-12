@@ -40,8 +40,8 @@ public class VehiclesListFragment extends Fragment implements VehicleView{
     private ParkingLotMotorcycleViewModel parkingLotMotorcycleViewModel;
     private PaymentAplication paymentAplication;
     private ArrayList<Vehicle> vehicleArrayList;
-    private List<Car> cars = new ArrayList<>();
-    private List<Motorcycle> motorcycleList = new ArrayList<>();
+    private List<Vehicle> cars = new ArrayList<>();
+    private List<Vehicle> motorcycleList = new ArrayList<>();
     private AlertDialog.Builder builder;
     private VehiclesAdapter adapter;
 

@@ -1,16 +1,15 @@
 package co.com.ceiba.dataaccess.repository;
 
 import java.util.List;
-import java.util.Observable;
 
 import javax.inject.Inject;
 
 import co.com.ceiba.dataaccess.AppDatabase;
 import co.com.ceiba.dataaccess.anticorruption.CarMapper;
-import co.com.ceiba.domain.entity.Car;
-import co.com.ceiba.domain.repository.ParkingLotCarRepository;
+import co.com.ceiba.domain.entity.Vehicle;
+import co.com.ceiba.domain.repository.ParkingLotVehicleRepository;
 
-public class ParkingLotCarRepositoryImpl implements ParkingLotCarRepository {
+public class ParkingLotCarRepositoryImpl implements ParkingLotVehicleRepository {
 
     private AppDatabase databaseParkingLot;
 
@@ -19,12 +18,13 @@ public class ParkingLotCarRepositoryImpl implements ParkingLotCarRepository {
         this.databaseParkingLot = databaseParkingLot;
     }
     @Override
-    public void saveVehicle(Car car) {
-        databaseParkingLot.carDao().insertCar(new CarMapper().carToCarRoomMapper(car));
+    public Vehicle saveVehicle(Vehicle vehicle) {
+        databaseParkingLot.carDao().insertCar(new CarMapper().carToCarRoomMapper(vehicle));
+        return vehicle;
     }
 
     @Override
-    public Car getCar(String plate) {
+    public Vehicle VehicleExist(String plate) {
         return new CarMapper().carRoomToCarMapper(databaseParkingLot.carDao().getCarRoom(plate));
     }
 
@@ -34,7 +34,7 @@ public class ParkingLotCarRepositoryImpl implements ParkingLotCarRepository {
     }
 
     @Override
-    public List<Car> getCars() {
+    public List<Vehicle> getVehicles() {
         return new CarMapper().listCarRoomToListCar(databaseParkingLot.carDao().getCars());
     }
 }

@@ -25,8 +25,8 @@ public class MotorcycleMapper {
         }
     }
 
-    public List<Motorcycle> listMotorcycleRoomToListMotorcycle(List<MotorcycleRoom> motorcycleRoomList){
-        List<Motorcycle> motorcycles = new ArrayList<Motorcycle>();
+    public List<Vehicle> listMotorcycleRoomToListMotorcycle(List<MotorcycleRoom> motorcycleRoomList){
+        List<Vehicle> motorcycles = new ArrayList<Vehicle>();
         for (MotorcycleRoom motorcycleRoom:motorcycleRoomList) {
             motorcycles.add(motorcycleRoomToMotorcycleMapper(motorcycleRoom));
         }

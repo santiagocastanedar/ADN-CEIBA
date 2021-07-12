@@ -14,24 +14,28 @@ import javax.inject.Inject;
 import co.com.ceiba.adnceiba.asynctask.CarAsyncTask;
 import co.com.ceiba.adnceiba.asynctask.VehicleAsynckTaskParams;
 import co.com.ceiba.application.services.CarAplicationServices;
+import co.com.ceiba.dataaccess.AppDatabase;
+import co.com.ceiba.dataaccess.repository.ParkingLotCarRepositoryImpl;
 import co.com.ceiba.domain.entity.Car;
+import co.com.ceiba.domain.entity.Vehicle;
+import co.com.ceiba.domain.service.ParkingLotVehicleService;
 import dagger.hilt.android.lifecycle.HiltViewModel;
-
-
 
 @HiltViewModel
 public class ParkingLotCarViewModel extends ViewModel {
 
-    private final CarAplicationServices carAplicationServices;
+    private CarAplicationServices carAplicationServices;
     private MutableLiveData<String> carSaved;
-    private List<Car> carList = new ArrayList<Car>();
+    private List<Vehicle> carList = new ArrayList<Vehicle>();
+    private ParkingLotVehicleService parkingLotVehicleService;
 
     @Inject
-    public ParkingLotCarViewModel(CarAplicationServices carAplicationServices){
-        this.carAplicationServices = carAplicationServices;
+    public ParkingLotCarViewModel(AppDatabase appDatabase){
+        parkingLotVehicleService = new ParkingLotVehicleService(new ParkingLotCarRepositoryImpl(appDatabase));
+        this.carAplicationServices = new CarAplicationServices(parkingLotVehicleService);
     }
 
-    public List<Car> getCars() throws InterruptedException {
+    public List<Vehicle> getCars() throws InterruptedException {
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
