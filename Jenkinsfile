@@ -27,7 +27,6 @@ pipeline {
 
   //Aquí comienzan los “items” del Pipeline
   stages{
-    
 
     stage('Build') {
       steps {
