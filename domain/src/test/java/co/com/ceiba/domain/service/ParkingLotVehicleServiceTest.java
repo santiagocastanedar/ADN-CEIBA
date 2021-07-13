@@ -4,10 +4,12 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnit;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.MockitoRule;
 
 import java.text.ParseException;
@@ -16,6 +18,7 @@ import co.com.ceiba.domain.entity.Car;
 import co.com.ceiba.domain.exception.RestPlateException;
 import co.com.ceiba.domain.repository.ParkingLotVehicleRepository;
 
+@RunWith(MockitoJUnitRunner.class)
 public class ParkingLotVehicleServiceTest {
 
     @Rule
@@ -23,6 +26,9 @@ public class ParkingLotVehicleServiceTest {
 
     @Mock
     private ParkingLotVehicleRepository parkingLotVehicleRepository;
+
+    @Mock
+    private VehicleCapacityService vehicleCapacityService;
 
     @InjectMocks
     ParkingLotVehicleService parkingLotVehicleService;
@@ -32,7 +38,7 @@ public class ParkingLotVehicleServiceTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    /*@Test
+    @Test
     public void vehiclePlateRestriction_startWithA_Exception() {
         //Arrange
         String entryDate = ("2021-07-06 7:00");
@@ -47,5 +53,5 @@ public class ParkingLotVehicleServiceTest {
             //Assert
             Assert.assertEquals(expectedMessage,ex.getMessage());
         }
-    }*/
+    }
 }
