@@ -44,14 +44,6 @@ pipeline {
       }
     }
 
-    stage('Compile & Integration Tests') {
-      steps{
-        echo "------------>Compile & Integration test<------------"
-        sh './gradlew clean'
-        sh './gradlew connectedAndroidTest'
-      }
-    }
-
     stage('Static Code Analysis') {
       steps{
         echo '------------>Análisis de código estático<------------'
@@ -61,7 +53,13 @@ sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallat
       }
     }
 
-      
+    stage('Compile & Integration Tests') {
+      steps{
+        echo "------------>Compile & Integration test<------------"
+        sh './gradlew clean'
+        sh './gradlew connectedAndroidTest'
+      }
+    }
   }
 
   post {
