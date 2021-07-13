@@ -6,7 +6,8 @@ import dagger.hilt.EntryPoint;
 import dagger.hilt.InstallIn;
 import dagger.hilt.android.components.ActivityRetainedComponent;
 
-
+@EntryPoint
+@InstallIn(ActivityRetainedComponent.class)
 public interface ParkingLotVehicleRepository {
     Vehicle saveVehicle(Vehicle vehicle);
     Vehicle VehicleExist(String plate);

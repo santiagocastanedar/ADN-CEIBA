@@ -32,10 +32,8 @@ public class ParkingLotMotorcycleViewModel extends ViewModel {
     private ParkingLotVehicleService parkingLotVehicleService;
 
     @Inject
-    public ParkingLotMotorcycleViewModel(AppDatabase appDatabase){
-        this.parkingLotVehicleService = new ParkingLotVehicleService(new ParkingLotMotorcycleRepositoryImpl(appDatabase)
-                ,new MotorcycleCapacityServideImpl());
-        this.motorcycleApplicationService =  new MotorcycleApplicationService(parkingLotVehicleService);
+    public ParkingLotMotorcycleViewModel(MotorcycleApplicationService motorcycleApplicationService){
+        this.motorcycleApplicationService =  motorcycleApplicationService;
     }
 
     public LiveData<String> executeSaveMotorcycle(String plate,String entrydate,int cylinder){

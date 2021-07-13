@@ -25,16 +25,14 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 @HiltViewModel
 public class ParkingLotCarViewModel extends ViewModel {
 
-    private CarAplicationServices carAplicationServices;
+    private final CarAplicationServices carAplicationServices;
     private MutableLiveData<String> carSaved;
     private List<Vehicle> carList = new ArrayList<Vehicle>();
-    private ParkingLotVehicleService parkingLotVehicleService;
 
     @Inject
-    public ParkingLotCarViewModel(AppDatabase appDatabase){
-        parkingLotVehicleService = new ParkingLotVehicleService(new ParkingLotCarRepositoryImpl(appDatabase)
-                ,new CarCapacityServiceImpl());
-        this.carAplicationServices = new CarAplicationServices(parkingLotVehicleService);
+    public ParkingLotCarViewModel(CarAplicationServices carAplicationServices){
+        this.carAplicationServices = carAplicationServices;
+
     }
 
     public List<Vehicle> getCars() throws InterruptedException {

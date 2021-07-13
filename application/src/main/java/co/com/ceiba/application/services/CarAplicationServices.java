@@ -11,12 +11,12 @@ import co.com.ceiba.domain.service.ParkingLotVehicleService;
 
 public class CarAplicationServices {
 
-
+    @Inject
     public ParkingLotVehicleService parkingLotVehicleService;
 
+    @Inject
+    public CarAplicationServices(){
 
-    public CarAplicationServices(ParkingLotVehicleService parkingLotVehicleService){
-        this.parkingLotVehicleService = parkingLotVehicleService;
     }
 
     public void saveCar(Car car){
@@ -27,7 +27,7 @@ public class CarAplicationServices {
         }
     }
 
-    public List<Vehicle> getCars(){
+    /*public List<Vehicle> getCars(){
         return parkingLotVehicleService.getVehicles();
-    }
+    }*/
 }

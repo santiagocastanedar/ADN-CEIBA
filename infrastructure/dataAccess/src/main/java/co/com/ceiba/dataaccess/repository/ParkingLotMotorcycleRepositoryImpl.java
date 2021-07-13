@@ -19,7 +19,6 @@ public class ParkingLotMotorcycleRepositoryImpl implements ParkingLotVehicleRepo
         this.appDatabaseParkingLot = appDatabaseParkingLot;
     }
 
-
     @Override
     public Vehicle saveVehicle(Vehicle vehicle) {
         appDatabaseParkingLot.motorcycleDao().insertVehicle(new MotorcycleMapper().motorcycleTomotorcycleRoomMapper((Motorcycle) vehicle));
