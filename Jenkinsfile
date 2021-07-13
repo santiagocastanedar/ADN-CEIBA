@@ -44,20 +44,19 @@ pipeline {
       }
     }
 
+    stage('Compile & Integration Tests') {
+      steps{
+        echo "------------>Compile & Integration test<------------"
+        sh './gradlew connectedAndroidTest'
+      }
+    }
+
     stage('Static Code Analysis') {
       steps{
         echo '------------>Análisis de código estático<------------'
         withSonarQubeEnv('Sonar') {
-sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=sonar-project.properties"
+            sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=sonar-project.properties"
         }
-      }
-    }
-
-    stage('Compile & Integration Tests') {
-      steps{
-        echo "------------>Compile & Integration test<------------"
-        sh './gradlew clean'
-        sh './gradlew connectedAndroidTest'
       }
     }
   }
