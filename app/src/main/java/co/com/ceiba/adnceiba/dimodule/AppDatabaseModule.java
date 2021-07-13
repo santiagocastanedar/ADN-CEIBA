@@ -27,7 +27,6 @@ public  class AppDatabaseModule {
         return Room.databaseBuilder(context,AppDatabase.class, "parkingDatabase").build();
     }
 
-
     @Singleton
     @Provides
     public CarDao providesCarDao(AppDatabase appDatabase){

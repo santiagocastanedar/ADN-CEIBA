@@ -11,9 +11,7 @@ import co.com.ceiba.domain.service.ParkingLotVehicleService;
 
 public class MotorcycleApplicationService {
 
-
     public ParkingLotVehicleService parkingLotVehicleService;
-
 
     public MotorcycleApplicationService(ParkingLotVehicleService parkingLotVehicleService){
         this.parkingLotVehicleService = parkingLotVehicleService;

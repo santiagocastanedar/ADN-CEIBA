@@ -45,13 +45,13 @@ pipeline {
       }
     }
 
-    stage('Compile & Integration Tests') {
+    /*stage('Compile & Integration Tests') {
       steps{
         echo "------------>Compile & Integration test<------------"
         sh './gradlew clean'
         sh './gradlew connectedAndroidTest'
       }
-    }
+    }*/
 
     stage('Static Code Analysis') {
       steps{

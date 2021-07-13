@@ -1,4 +1,4 @@
-package co.com.ceiba.domain.other;
+package co.com.ceiba.domain.service;
 
 import org.junit.Assert;
 import org.junit.Before;
