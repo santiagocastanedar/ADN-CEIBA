@@ -24,7 +24,7 @@ public class ParkingLotCarRepositoryImpl implements ParkingLotVehicleRepository 
     }
 
     @Override
-    public Vehicle VehicleExist(String plate) {
+    public Vehicle vehicleExist(String plate) {
         return new CarMapper().carRoomToCarMapper(databaseParkingLot.carDao().getCarRoom(plate));
     }
 

@@ -12,7 +12,6 @@ import co.com.ceiba.domain.exception.RestPlateException;
 import co.com.ceiba.domain.exception.VehicleAlreadyExistsException;
 import co.com.ceiba.domain.repository.ParkingLotVehicleRepository;
 import static co.com.ceiba.domain.utils.Constant.DATE_FORMAT_PAYMENT;
-import static co.com.ceiba.domain.utils.Constant.MAX_QUANTITY_CAR;
 import static co.com.ceiba.domain.utils.Constant.MONDAY_PERMIT;
 import static co.com.ceiba.domain.utils.Constant.PLATE_REST;
 import static co.com.ceiba.domain.utils.Constant.SUNDAY_PERMIT;
@@ -29,7 +28,7 @@ public class ParkingLotVehicleService {
     }
 
     public void saveVehicle(Vehicle vehicle) throws ParseException {
-        if(parkingLotVehicleRepository.VehicleExist(vehicle.getPlate()) != null){
+        if(parkingLotVehicleRepository.vehicleExist(vehicle.getPlate()) != null){
             throw new VehicleAlreadyExistsException();
         }
         if(vehicleCapacityService.validateCapacity(getQuantity())){
