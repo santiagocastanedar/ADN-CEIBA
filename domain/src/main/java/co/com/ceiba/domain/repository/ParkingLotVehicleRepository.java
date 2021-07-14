@@ -10,7 +10,7 @@ import dagger.hilt.android.components.ActivityRetainedComponent;
 @InstallIn(ActivityRetainedComponent.class)
 public interface ParkingLotVehicleRepository {
     Vehicle saveVehicle(Vehicle vehicle);
-    Vehicle VehicleExist(String plate);
+    //Vehicle vehicleExist(String plate);
     int getQuantity();
     List<Vehicle> getVehicles();
 }

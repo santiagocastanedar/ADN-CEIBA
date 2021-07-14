@@ -25,10 +25,10 @@ public class ParkingLotMotorcycleRepositoryImpl implements ParkingLotVehicleRepo
         return vehicle;
     }
 
-    @Override
-    public Vehicle VehicleExist(String plate) {
+    /*@Override
+    public Vehicle vehicleExist(String plate) {
         return new MotorcycleMapper().motorcycleRoomToMotorcycleMapper(appDatabaseParkingLot.motorcycleDao().getMotorcycle(plate));
-    }
+    }*/
 
     @Override
     public int getQuantity() {
