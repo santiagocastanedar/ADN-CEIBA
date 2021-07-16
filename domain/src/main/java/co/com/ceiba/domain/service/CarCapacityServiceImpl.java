@@ -6,10 +6,6 @@ public class CarCapacityServiceImpl implements VehicleCapacityService {
 
     @Override
     public boolean validateCapacity(int vehicleQuantity) {
-        boolean response = false;
-        if(vehicleQuantity >= MAX_QUANTITY_CAR){
-            response = true;
-        }
-        return response;
+        return vehicleQuantity >= MAX_QUANTITY_CAR;
     }
 }
